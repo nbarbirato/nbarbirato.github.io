@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Certifications – Nathan BARBIRATO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li>
+            <a href="index.html#about">Présentation</a>
+            <ul class="sub-menu">
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="index.html#experiences">Expériences</a></li>
+            </ul>
+        </li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li>
+            <a href="competences.html">Compétences</a>
+            <ul class="sub-menu">
+                <li><a href="competences.html#systemes">Systèmes & Réseaux</a></li>
+                <li><a href="competences.html#virtualisation">Virtualisation</a></li>
+                <li><a href="competences.html#supervision">Supervision</a></li>
+                <li><a href="competences.html#cyber">Cybersécurité</a></li>
+                <li><a href="competences.html#dev">Développement</a></li>
+            </ul>
+        </li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="certifications-page">
+    <div class="top-bar">
+        <a href="index.html#certifications" class="btn-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg> 
+            Retour
+        </a>
+    </div>
+
+    <h1>Mes <span>Certifications</span> 🏆</h1>
+
+    <div class="cert-grid">
+        <div class="cert-card">
+            <div class="cert-header"><span class="cert-date">25 Fév 2026</span></div>
+            <h3>SecNumacadémie</h3>
+            <span class="cert-org">ANSSI - Sécurité des Systèmes d'Information</span>
+            <ul class="cert-details">
+                <li><span>Panorama de la SSI</span> <span>90%</span></li>
+                <li><span>Authentification</span> <span>86%</span></li>
+                <li><span>Sécurité sur Internet</span> <span>92%</span></li>
+                <li><span>Poste de travail</span> <span>92%</span></li>
+            </ul>
+            <a href="assets/certification-anssi.pdf" target="_blank" class="btn-pdf">Voir le PDF</a>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-header"><span class="cert-date">18 Déc 2025</span></div>
+            <h3>Infrastructure Cloud Azure</h3>
+            <span class="cert-org">Microsoft Cloud Computing</span>
+            <ul class="cert-details">
+                <li><span>Concepts fondamentaux Cloud</span> <span>Validé</span></li>
+                <li><span>Architecture Azure</span> <span>Validé</span></li>
+                <li><span>Gouvernance & Gestion</span> <span>Validé</span></li>
+            </ul>
+            <a href="assets/certification-azure.pdf" target="_blank" class="btn-pdf">Voir le PDF</a>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-header"><span class="cert-date">Sept - Nov 2024</span></div>
+            <h3>L'Atelier RGPD</h3>
+            <span class="cert-org">CNIL - Protection des données</span>
+            <ul class="cert-details">
+                <li><span>Notions clés</span> <span>100%</span></li>
+                <li><span>Principes de protection</span> <span>92%</span></li>
+                <li><span>Responsabilités des acteurs</span> <span>100%</span></li>
+                <li><span>Outils de la conformité</span> <span>100%</span></li>
+            </ul>
+            <a href="assets/certification-rgpd.pdf" target="_blank" class="btn-pdf">Voir le PDF</a>
+        </div>
+
+        <div class="cert-card">
+            <div class="cert-header"><span class="cert-date">15 Janv 2026</span></div>
+            <h3>Certification Pix</h3>
+            <span class="cert-org">Lycée Gustave Eiffel - Bordeaux</span>
+            <ul class="cert-details">
+                <li><span>Score global</span> <span>518 / 895 Pix</span></li>
+                <li><span>Niveau global</span> <span>Avancé 1</span></li>
+                <li><span>Environnement numérique</span> <span>Niveau 5</span></li>
+                <li><span>Protection et sécurité</span> <span>Niveau 4</span></li>
+            </ul>
+            <a href="assets/certification-pix.pdf" target="_blank" class="btn-pdf">Voir le PDF</a>
+        </div>
+    </div>
+</section>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNav');
+        const btt = document.getElementById('backToTop');
+        nav.classList.toggle('scrolled', window.scrollY > 150);
+        btt.classList.toggle('show', window.scrollY > 400);
+    });
+</script>
+</body>
+</html>

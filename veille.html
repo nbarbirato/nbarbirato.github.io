@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Veille Technologique – Nathan BARBIRATO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: var(--fg); scroll-margin-top: 100px; }
+        
+        /* Système d'onglets pour la veille */
+        .veille-content { display: none; }
+        .veille-content.active { display: block; animation: fadeIn 0.5s ease; }
+
+        .card-link { cursor: pointer; text-decoration: none; transition: 0.3s; }
+        .card-link.active .card { border-color: var(--accent); background: rgba(154, 200, 235, 0.05); transform: translateY(-5px); }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#about">Présentation</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li>
+            <a href="veille.html">Veille</a>
+            <ul class="sub-menu">
+                <li><a href="#multipathing">Le Multipathing</a></li>
+                <li><a href="#logpoint">LogPoint & SIEM</a></li>
+            </ul>
+        </li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="veille-section">
+    <div class="top-bar"></div>
+
+    <h1>Veille <span>Technologique</span> 📡</h1>
+
+    <h2 style="margin-top: 4rem;">Mes Sujets de Veille</h2>
+    <div class="grid-3" style="margin-bottom: 5rem;">
+        <div class="card-link active" onclick="switchVeille('multipathing', this)">
+            <div class="card">
+                <span class="tag-sio">Infrastructure</span>
+                <h3 style="margin-top:1rem;">Le Multipathing</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Redondance de stockage SAN sous Proxmox.</p>
+            </div>
+        </div>
+        <div class="card-link" onclick="switchVeille('logpoint', this)">
+            <div class="card">
+                <span class="tag-sio">Sécurité & SIEM</span>
+                <h3 style="margin-top:1rem;">LogPoint & SIEM</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Analyse et visualisation centralisée des logs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="multipathing" class="veille-content active">
+        <div class="card" style="margin-bottom: 3rem; border-left: 5px solid var(--accent);">
+            <h3 style="margin-bottom: 1rem;">Sujet : Le multipathing dans un environnement virtualisé</h3>
+            <p>Dans le cadre de mon stage, j'ai déployé une infrastructure <strong>Proxmox VE</strong> connectée à une baie de stockage <strong>SAN</strong>. L'objectif était de garantir une continuité de service par la redondance des accès réseau, évitant ainsi toute interruption en cas de défaillance d'un contrôleur ou d'un chemin.</p>
+        </div>
+
+        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Ma Méthodologie & Outils</h3>
+        <div class="grid-3" style="margin-bottom: 4rem;">
+            <div class="card">
+                <span class="tag-sio">Flux & Veille</span>
+                <h3 style="margin-top:1rem;">Outils de veille</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Utilisation de <em>Feedly</em> et <em>Google Alerts</em> pour la surveillance des vulnérabilités liées aux outils de stockage Linux.</p>
+            </div>
+            <div class="card">
+                <span class="tag-sio">Expertise Technique</span>
+                <h3 style="margin-top:1rem;">Sources de référence</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Consultation du <em>Wiki Proxmox</em> et de <em>ServerFault</em> pour l'analyse des fichiers de configuration <code>/etc/multipath.conf</code>.</p>
+            </div>
+            <div class="card">
+                <span class="tag-sio">Validation</span>
+                <h3 style="margin-top:1rem;">Tests CLI</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Validation pratique via les commandes <code>multipath -ll</code>, <code>lsblk</code> et <code>journalctl</code> pour le diagnostic d'erreurs.</p>
+            </div>
+        </div>
+
+        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Résultats et Analyse Personnelle</h3>
+        <div class="card">
+            <p style="margin-bottom: 1rem;">Cette veille a révélé qu'une configuration basée uniquement sur le filtrage par <em>WWID</em> limite la flexibilité. J'ai pu optimiser l'infrastructure en adoptant le paramètre <code>find_multipaths yes</code>, rendant le système plus évolutif.</p>
+            <blockquote style="border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; font-size: 0.9rem; color: var(--dark);">
+                "C’est un point critique : dans une infrastructure virtualisée, l'absence de multipathing expose l'ensemble des VMs à un crash immédiat en cas d'incident de stockage, ce qui représente un danger majeur pour la production."
+            </blockquote>
+            <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted);">
+                <strong>Points clés :</strong> Redondance SAN • Haute disponibilité • Configuration Proxmox
+            </div>
+        </div>
+    </div>
+
+    <div id="logpoint" class="veille-content">
+        <div class="card" style="margin-bottom: 3rem; border-left: 5px solid var(--accent);">
+            <h3 style="margin-bottom: 1rem;">Sujet : Gestion des événements et SIEM avec LogPoint</h3>
+            <p>Ma veille porte sur les solutions de <strong>SIEM (Security Information and Event Management)</strong>, avec un focus particulier sur <strong>LogPoint</strong>. L'objectif est de centraliser, normaliser et analyser en temps réel les journaux d'événements (logs) provenant de toute l'infrastructure (systèmes, réseaux, applications) pour détecter des incidents de sécurité complexes.</p>
+        </div>
+
+        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Méthodologie & Outils de veille</h3>
+        <div class="grid-3" style="margin-bottom: 4rem;">
+            <div class="card">
+                <span class="tag-sio">Technique</span>
+                <h3 style="margin-top:1rem;">Documentation LogPoint</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Suivi des mises à jour des <strong>Taxonomies</strong> et des nouveaux plugins d'ingestion pour les équipements récents.</p>
+            </div>
+            <div class="card">
+                <span class="tag-sio">Communauté</span>
+                <h3 style="margin-top:1rem;">Règles de Corrélation</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Veille sur les signatures d'attaques et l'implémentation de règles basées sur le framework <strong>MITRE ATT&CK</strong>.</p>
+            </div>
+            <div class="card">
+                <span class="tag-sio">Analyse Visuelle</span>
+                <h3 style="margin-top:1rem;">Dashboards & Analytics</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Étude des meilleures pratiques pour la création de tableaux de bord dynamiques facilitant l'investigation (Forensics).</p>
+            </div>
+        </div>
+
+        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Synthèse : L'enjeu de la visualisation</h3>
+        <div class="card">
+            <p style="margin-bottom: 1rem;">L'efficacité d'un SIEM comme LogPoint réside dans sa capacité à transformer des volumes massifs de données brutes en informations actionnables. La visualisation permet de corréler des événements isolés pour identifier une attaque par mouvement latéral.</p>
+            <blockquote style="border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; font-size: 0.9rem; color: var(--dark);">
+                "La puissance de LogPoint réside dans sa capacité à réduire le 'bruit' pour ne faire remonter que les alertes critiques. Une visualisation bien conçue divise par trois le temps de réaction des équipes de sécurité (MTTR)."
+            </blockquote>
+            <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted);">
+                <strong>Mots-clés :</strong> Centralisation de logs • Corrélation d'événements • SIEM • Dashboarding • Cybersécurité
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    const mainNav = document.getElementById('mainNav'), btt = document.getElementById('backToTop');
+    
+    // Gestion du scroll
+    window.addEventListener('scroll', () => {
+        mainNav.classList.toggle('scrolled', window.scrollY > 150);
+        btt.classList.toggle('show', window.scrollY > 400);
+    });
+
+    // Fonction de switch entre les veilles
+    function switchVeille(id, element = null) {
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        document.querySelectorAll('.veille-content').forEach(section => section.classList.remove('active'));
+        document.querySelectorAll('.card-link').forEach(link => link.classList.remove('active'));
+        
+        target.classList.add('active');
+        const trigger = element || document.querySelector(`.card-link[onclick*="'${id}'"]`);
+        if (trigger) trigger.classList.add('active');
+
+        // Scroll avec décalage pour le menu fixe
+        const offset = 150;
+        const offsetPosition = (target.getBoundingClientRect().top + window.pageYOffset) - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+
+    // Interception des clics menu
+    document.querySelectorAll('.sub-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href').split('#')[1];
+            if (hash) {
+                e.preventDefault();
+                switchVeille(hash);
+                history.pushState(null, null, '#' + hash);
+            }
+        });
+    });
+
+    // Animations Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Gestion de l'ancre au chargement
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.substring(1);
+        if (hash) setTimeout(() => switchVeille(hash), 100);
+    });
+</script>
+</body>
+</html>

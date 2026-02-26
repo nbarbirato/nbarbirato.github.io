@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Compétences – Nathan BARBIRATO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Centralisation des styles pour éviter les répétitions dans le HTML */
+        h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; color: var(--fg); scroll-margin-top: 100px; }
+        h2 span { color: var(--accent); }
+        
+        /* Optimisation des grilles de compétences */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+            gap: 3rem; 
+            justify-items: center;
+        }
+
+        .skill-card img { width: 75px; height: 75px; object-fit: contain; }
+        .skill-card img.huge-icon { width: 110px; height: 110px; } /* Pour Windows Server par exemple */
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#about">Présentation</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li>
+            <a href="competences.html">Compétences</a>
+            <ul class="sub-menu">
+                <li><a href="#systemes">Systèmes & Réseaux</a></li>
+                <li><a href="#virtualisation">Virtualisation</a></li>
+                <li><a href="#supervision">Supervision</a></li>
+                <li><a href="#cyber">Cybersécurité</a></li>
+                <li><a href="#dev">Développement</a></li>
+            </ul>
+        </li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="competences">
+    <div class="header-box">
+        <h1>Compétences & <span>Maîtrise Technique</span> 🎓</h1>
+        <p class="subtitle">Exploration de mes domaines d'expertise et des technologies maîtrisées.</p>
+    </div>
+
+    <div class="grid-competences">
+        <div class="card-link active" onclick="switchTab('systemes', this)">
+            <div class="card-nav"><div class="card-icon">🌐</div><h3>Systèmes & Réseaux</h3><span class="tag-sio">Infrastructure</span></div>
+        </div>
+        <div class="card-link" onclick="switchTab('virtualisation', this)">
+            <div class="card-nav"><div class="card-icon">☁️</div><h3>Virtualisation</h3><span class="tag-sio">Cloud</span></div>
+        </div>
+        <div class="card-link" onclick="switchTab('supervision', this)">
+            <div class="card-nav"><div class="card-icon">📊</div><h3>Supervision</h3><span class="tag-sio">MCO</span></div>
+        </div>
+        <div class="card-link" onclick="switchTab('cyber', this)">
+            <div class="card-nav"><div class="card-icon">🛡️</div><h3>Cybersécurité</h3><span class="tag-sio">Sécurité</span></div>
+        </div>
+        <div class="card-link" onclick="switchTab('dev', this)">
+            <div class="card-nav"><div class="card-icon">👨‍💻</div><h3>Scripting & Dev</h3><span class="tag-sio">Automation</span></div>
+        </div>
+    </div>
+
+    <div class="competences-display">
+        <div id="systemes" class="tab-content active">
+            <div class="content-header"><h2>Administration <span>Systèmes & Réseaux</span></h2><div class="divider-small"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><img src="icone/windows_server.png" class="huge-icon"><span>Windows Serveur</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Openlogo-debianV2.svg"><span>Linux Debian</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg"><span>Windows Client</span></div>
+                <div class="skill-card"><img src="https://miro.medium.com/1*fSFKwxcjG1cRtTTXz2TmLg.png"><span>AD / LDAP</span></div>
+                <div class="skill-card"><img src="icone/Packet-Tracer.png"><span>Cisco Packet Tracer</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Apache_Software_Foundation_Logo_%282016%29.svg"><span>Apache / Nginx</span></div>
+                <div class="skill-card"><img src="https://cdn-icons-png.flaticon.com/512/3067/3067451.png"><span>DHCP / DNS</span></div>
+            </div>
+        </div>
+
+        <div id="virtualisation" class="tab-content">
+            <div class="content-header"><h2>Virtualisation & <span>Sauvegarde</span></h2><div class="divider-small"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png"><span>VirtualBox</span></div>
+                <div class="skill-card"><img src="https://www.equantum.fr/user/pages/01.linux/installer-proxmox-ve-sur-debian-stretch/proxy.duckduckgo.com.png"><span>Proxmox VE</span></div>
+                <div class="skill-card"><img src="https://teddycorp.net/wp-content/uploads/2019/06/xKHqvSjI_400x400.jpg"><span>VMware</span></div>
+                <div class="skill-card"><img src="icone/datto.png"><span>Datto (Backup)</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg"><span>Docker</span></div>
+                <div class="skill-card"><img src="https://camo.githubusercontent.com/08e4fd3fc0579beda5f92385b3a7dedcd17cb7ee60d11e22e0b9416683240387/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6d6b6576656e6161722f63686f636f6c617465792d7061636b6167657340633437626466343366633537613634306234303961383231666561643038303034323234356133662f69636f6e732f766565616d2d6261636b75702d616e642d7265706c69636174696f6e2d69736f2e706e67"><span>Veeam</span></div>
+            </div>
+        </div>
+
+        <div id="supervision" class="tab-content">
+            <div class="content-header"><h2>Supervision & <span>Analyse</span></h2><div class="divider-small"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><img src="icone/logpoint.png"><span>Logpoint</span></div>
+                <div class="skill-card"><img src="icone/graylog.png"><span>Graylog</span></div>
+                <div class="skill-card"><img src="icone/glpi.png"><span>GLPI</span></div>
+                <div class="skill-card"><img src="icone/zoiper.png"><span>Zoiper (VoIP)</span></div>
+            </div>
+        </div>
+
+        <div id="cyber" class="tab-content">
+            <div class="content-header"><h2>Expertise <span>Cybersécurité</span></h2><div class="divider-small"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><img src="https://www.kali.org/images/kali-logo.svg"><span>Kali Linux</span></div>
+                <div class="skill-card"><img src="icone/pfsence.png"><span>pfSense (Firewall)</span></div>
+                <div class="skill-card"><img src="icone/wireshark.png"><span>Wireshark</span></div>
+            </div>
+        </div>
+
+        <div id="dev" class="tab-content">
+            <div class="content-header"><h2>Scripting & <span>Développement</span></h2><div class="divider-small"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"><span>HTML / CSS</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"><span>Python</span></div>
+                <div class="skill-card"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/PowerShell_Core_6.0_icon.png"><span>PowerShell</span></div>
+                <div class="skill-card"><img src="icone/sql.png"><span>SQL</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+// Gestion du scroll Navbar & BackToTop
+window.addEventListener('scroll', function() {
+    const nav = document.getElementById('mainNav');
+    const btt = document.getElementById('backToTop');
+    nav.classList.toggle('scrolled', window.scrollY > 150);
+    btt.classList.toggle('show', window.scrollY > 400);
+});
+
+// Système d'onglets avec Scroll fluide compensé
+function switchTab(id, element = null) {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.card-link').forEach(link => link.classList.remove('active'));
+
+    target.classList.add('active');
+    const trigger = element || document.querySelector(`.card-link[onclick*="'${id}'"]`);
+    if (trigger) trigger.classList.add('active');
+
+    // Calcul de la position avec offset pour ne pas coller au menu
+    const offset = 150;
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = target.getBoundingClientRect().top;
+    const offsetPosition = (elementRect - bodyRect) - offset;
+
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+}
+
+// Interception des clics menu pour éviter le saut brusque
+document.querySelectorAll('.sub-menu a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const hash = this.getAttribute('href').split('#')[1];
+        if (hash) {
+            e.preventDefault();
+            switchTab(hash);
+            history.pushState(null, null, '#' + hash);
+        }
+    });
+});
+
+// Deep linking au chargement
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash) setTimeout(() => switchTab(hash), 100);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stages – Nathan BARBIRATO</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+    --bg: #f7f6f2; 
+    --fg: #111110; 
+    --accent: #9AC8EB; 
+    --dark: #384454;   
+    --muted: #888880; 
+    --border: #ddddd8; 
+    --card: #ffffff;
+    --light-text: #D4D3DC; 
+    --font-display: 'Syne', sans-serif; 
+    --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; overflow-x: hidden; }
+
+    /* ── NAV DYNAMIQUE (Identique index.html) ── */
+    nav { 
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
+    display: flex; align-items: center; justify-content: space-between; 
+    padding: 1.25rem 3rem; background: rgba(247,246,242,0.88); backdrop-filter: blur(12px); 
+    border-bottom: 1px solid var(--border);
+    transition: opacity 0.5s ease;
+    }
+
+    ul { list-style: none !important; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links > li { position: relative; }
+
+    .sub-menu { 
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      background: var(--card); border: 1px solid var(--border); 
+      min-width: 220px; padding: 1rem 0; border-radius: 12px;
+      display: none; flex-direction: column; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center;
+    }
+    .sub-menu a { display: block; padding: 0.5rem 1rem; font-size: 0.72rem; text-transform: lowercase; color: #aaa; text-decoration: none; transition: 0.3s; }
+    .sub-menu a:hover { color: var(--accent); }
+    .nav-links > li:hover .sub-menu { display: flex; }
+
+    nav.scrolled {
+    top: 50%; left: 3rem; right: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+    padding: 3.5rem 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: var(--card);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+    width: auto;
+    align-items: flex-start;
+    backdrop-filter: blur(10px);
+    }
+
+    .nav-logo { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--fg); }
+    nav.scrolled .nav-logo { display: none; }
+
+    nav.scrolled .nav-links { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
+
+    .nav-links a { 
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; 
+    color: var(--muted); text-decoration: none; transition: color 0.3s ease; 
+    letter-spacing: 0.08em; position: relative;
+    }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+    nav.scrolled .nav-links a::after { display: none; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--dark); }
+    
+    /* Onglet actif en bleu */
+    .nav-links a.active { color: var(--accent) !important; }
+    .nav-links a.active::after { width: 100%; }
+
+    nav.scrolled .sub-menu {
+      position: static; transform: none; display: flex; border: none; box-shadow: none;
+      padding: 0 0 0 1.5rem; margin-top: 0.4rem; background: transparent; text-align: left;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 8rem 3rem; max-width: 1100px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+    h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; transition: 0.25s; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── BACK TO TOP ── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      background: var(--dark); color: var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+      border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    #backToTop.show { opacity: 1; visibility: visible; }
+    #backToTop:hover { background: var(--accent); color: var(--dark); transform: translateY(-5px); }
+
+    @media (max-width: 768px) { nav.scrolled { display: none; } }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+<a class="nav-logo" href="index.html">Nathan BARBIRATO - PORTFOLIO</a>
+<ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li>
+      <a href="index.html#about">Présentation</a>
+      <ul class="sub-menu">
+        <li><a href="index.html#about">à propos de moi</a></li>
+        <li><a href="index.html#exp-section">activités professionnelles</a></li>
+      </ul>
+    </li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="stages.html" class="active">Stages</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section id="stages-page">
+  <div class="reveal visible">
+    <p style="text-transform: uppercase; font-size: 0.7rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem;">Immersion Professionnelle</p>
+    <h2>Mes Stages en BTS SIO</h2>
+    <div class="card">
+        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Session 2025</h3>
+        <p>Mon premier stage de fin de première année se déroulera du :</p>
+        <p style="margin-top: 1rem; font-weight: 600; color: var(--dark);">📅 26 Mai au 27 Juin 2025</p>
+        <p style="margin-top: 1rem;">Je suis actuellement à la recherche d'une opportunité dans le domaine de l'administration réseaux ou de la cybersécurité.</p>
+    </div>
+  </div>
+</section>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+(function() {
+    const mainNav = document.getElementById('mainNav');
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 150) mainNav.classList.add('scrolled');
+      else mainNav.classList.remove('scrolled');
+
+      if (window.scrollY > 400) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>

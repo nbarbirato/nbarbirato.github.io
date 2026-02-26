@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Réalisations – Nathan Barbirato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#about">Présentation</a></li>
+        <li><a href="realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a>
+            <ul class="sub-menu">
+                <li><a href="#annee1">Première Année</a></li>
+                <li><a href="#annee2">Deuxième Année</a></li>
+            </ul>
+        </li>
+        <li><a href="stages.html">Stages</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section id="realisations-hero" style="padding-top: 10rem; min-height: 35vh;">
+        <span class="hero-tag">Ateliers de Professionnalisation (AP)</span>
+        <h1>Mes<br><span>Réalisations</span> 📚</h1>
+        <p style="margin-top: 1.5rem; color: var(--muted); max-width: 600px;">Retrouvez ici l'ensemble des travaux pratiques et projets réseaux réalisés durant mon cursus en BTS SIO SISR.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="annee1" style="padding-top: 5rem; padding-bottom: 8rem;">
+        <div class="reveal">
+            <p style="font-size: 0.72rem; text-transform: uppercase; color: var(--dark); font-weight: 600; margin-bottom: 0.6rem;">Fondamentaux Réseau & Système</p>
+            <h2 style="margin-bottom:3rem; font-family: var(--font-display);">Première Année (2024-2025)</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.1 : Strife</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Validation de solution Cloud privé avec Nextcloud sous Debian. Tests d'accès via station admin Kali Linux.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Nextcloud</span><span class="btn btn-mini">Debian</span><span class="btn btn-mini">Kali</span></div>
+                    <a href="realisations/strife.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.2 : Godzilla</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Déploiement de parc avec FOG Project. Gestion de 2 VLANs (déploiement et service) et capture d'images W10.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">FOG</span><span class="btn btn-mini">VLAN</span><span class="btn btn-mini">W10</span></div>
+                    <a href="realisations/godzilla.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.3 : FlexOffice</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Scripting PowerShell (logs, session) et mise en place d'un serveur FTP sécurisé (vsFTPd) sous Proxmox.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">PowerShell</span><span class="btn btn-mini">FTP</span><span class="btn btn-mini">Proxmox</span></div>
+                    <a href="realisations/flexoffice.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.4 : Assiz</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin réseau LAN (WiFi + DHCP + routage). Configuration d'un routeur à 3 pattes pour séparer les flux.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">WiFi</span><span class="btn btn-mini">DHCP</span><span class="btn btn-mini">Cisco</span></div>
+                    <a href="realisations/assiz.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="annee2" style="padding-top: 5rem;">
+        <div class="reveal">
+            <p style="font-size: 0.72rem; text-transform: uppercase; color: var(--dark); font-weight: 600; margin-bottom: 0.6rem;">Expertise & Cybersécurité</p>
+            <h2 style="margin-bottom:3rem; font-family: var(--font-display);">Deuxième Année (2025-2026)</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 3.1 : Navajo</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin réseau LAN (DNS + DHCP). Mise en place d'une passerelle à 3 pattes LAN-WAN avec routage statique et NTP.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">DNS</span><span class="btn btn-mini">DHCP</span><span class="btn btn-mini">Routage</span></div>
+                    <a href="realisations/navajo.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 3.2 : GPoPu</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Administration d'annuaire (AD + GPO + PowerShell). Sécurisation des accès et automatisation des tâches admin.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Active Directory</span><span class="btn btn-mini">GPO</span><span class="btn btn-mini">PS</span></div>
+                    <a href="realisations/gpopu.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 4.1 : DMZ</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin passerelle dorsale (routage + DHCP + filtrage). Déploiement base MariaDB et serveur WebR sous Debian 12.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Firewall</span><span class="btn btn-mini">SQL</span><span class="btn btn-mini">DMZ</span></div>
+                    <a href="realisations/dmz.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between;"><h3>AP 4.3 : Invincible</h3><span class="tag-sio">SISR</span></div>
+                    <p style="margin: 1rem 0; font-size: 0.9rem;">Approche SysOps avec Ansible (instanciation/paramétrage) et interconnexion de serveurs ToIP Asterisk.</p>
+                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Ansible</span><span class="btn btn-mini">ToIP</span><span class="btn btn-mini">Asterisk</span></div>
+                    <a href="realisations/" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', function() {
+    if (window.scrollY > 150) mainNav.classList.add('scrolled'); 
+    else mainNav.classList.remove('scrolled');
+    });
+</script>
+
+</body>
+</html>

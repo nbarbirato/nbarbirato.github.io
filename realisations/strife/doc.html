@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Livrables Techniques – Nathan Barbirato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="../../index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
+    <ul class="nav-links">
+        <li><a href="../../index.html#accueil">Accueil</a></li>
+        <li><a href="../../index.html#about">Présentation</a></li>
+        <li><a href="../../realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a>
+            <ul class="sub-menu">
+                <li><a href="../../realisations.html#annee1">Première Année</a></li>
+                <li><a href="../../realisations.html#annee2">Deuxième Année</a></li>
+            </ul>
+        </li>
+        <li><a href="../../stages.html">Stages</a></li>
+        <li><a href="../../competences.html">Compétences</a></li>
+        <li><a href="../../veille.html">Veille</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <section class="reveal">
+        <div class="back-nav" style="margin-bottom: 2rem;">
+            <a href="strife.html" class="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Retour au projet
+            </a>
+        </div>
+
+        <div class="header-box">
+            <h1>Dossier <span>Techniques</span></h1>
+            <p class="subtitle">Documentation d'architecture et procédures de mise en œuvre</p>
+            <div class="divider-small"></div>
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
+            <a href="Nextcloud_BARBIRATO_Nathan.pdf" class="card" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px; width: 100%; max-width: 600px;">
+                <div style="font-size: 2.5rem;">🛠️</div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Mise en œuvre Nextcloud</h3>
+                    <span class="btn btn-mini">CONSULTER</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="grid-2">
+            <article class="card">
+                <h3>Architecture Système</h3>
+                <p>Déploiement d'une solution LAMP sur Debian 11 incluant l'installation d'Apache2, la sécurisation de MariaDB et la configuration des extensions PHP 7.4 nécessaires.</p>
+            </article>
+
+            <article class="card">
+                <h3>Recette Technique</h3>
+                <div class="cert-details">
+                    <ul>
+                        <li><span>Recherche plein texte (FTS)</span> <span>Testé</span></li>
+                        <li><span>Prévisualisation en ligne</span> <span>Testé</span></li>
+                        <li><span>Dépôt de fichiers (File Drop)</span> <span>Testé</span></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BTS SIO SISR – Nathan BARBIRATO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .card ul { list-style: none !important; margin-top: 1rem; }
+        .card ul li { font-size: 0.9rem; margin-bottom: 0.6rem; color: var(--muted); position: relative; padding-left: 1.5rem; }
+        .card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+        .location-card { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .location-info { flex: 1; min-width: 300px; }
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li>
+            <a href="index.html#about">Présentation</a>
+            <ul class="sub-menu">
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="index.html#experiences">Expériences</a></li>
+            </ul>
+        </li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section>
+    <a href="index.html#about" class="btn-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
+        Retour au parcours
+    </a>
+
+    <div style="margin-top: 2rem;">
+        <span class="tag-sio">Diplôme d'État · Niveau 5 (Bac+2)</span>
+        <h1>BTS SIO <span>Option SISR</span></h1>
+        <p style="font-size: 1.2rem; color: var(--muted); max-width: 800px; margin-top: 1rem;">Le Brevet de Technicien Supérieur aux Services Informatiques aux Organisations (Option SISR) forme des spécialistes capables de gérer et sécuriser les infrastructures réseaux.</p>
+    </div>
+
+    <div class="grid-program" style="margin-top: 3rem;">
+        <div class="card">
+            <h3>Support & Maintenance</h3>
+            <p>Assurer le bon fonctionnement des postes de travail et l'assistance aux utilisateurs.</p>
+            <ul>
+                <li>Gestion des incidents (Ticketing)</li>
+                <li>Déploiement de parcs informatiques</li>
+                <li>Support technique de proximité</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Infrastructures & Réseaux</h3>
+            <p>Conception, installation et administration des serveurs et équipements réseaux.</p>
+            <ul>
+                <li>Administration Windows & Linux</li>
+                <li>Configuration Switches & Routeurs</li>
+                <li>Virtualisation (Proxmox, VirtualBox)</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Cybersécurité SISR</h3>
+            <p>Protection des données et résilience des systèmes d'information.</p>
+            <ul>
+                <li>Sécurisation des accès (VPN, Firewall)</li>
+                <li>Gestion des sauvegardes (Veeam)</li>
+                <li>Analyse de vulnérabilités</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 5rem; margin-bottom: 2rem;">Lieu de formation 🏫</h2>
+    <div class="card location-card">
+        <div class="location-info">
+            <h3>Lycée Gustave Eiffel — Bordeaux</h3>
+            <p>Le lycée offre un environnement technique de pointe avec des salles dédiées aux travaux pratiques réseaux, permettant de manipuler du matériel réel (Switchs Cisco, Baies serveurs).</p>
+        </div>
+        <div class="formation-img-box">
+            <a href="https://www.eiffel-bordeaux.org/" target="_blank">
+                <img src="icone/lycee_gustave_eiffel.png" alt="Lycée Gustave Eiffel">
+            </a>
+        </div>
+    </div>
+</section>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNav');
+        const btt = document.getElementById('backToTop');
+        nav.classList.toggle('scrolled', window.scrollY > 150);
+        btt.classList.toggle('show', window.scrollY > 400);
+    });
+</script>
+</body>
+</html>

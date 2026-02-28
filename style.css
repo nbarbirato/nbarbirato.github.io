@@ -175,3 +175,70 @@ h1 span { color: var(--accent); }
 
 @media (max-width: 992px) { .contact-main-wrapper { grid-template-columns: 1fr; } .contact-row { flex-direction: column; align-items: flex-start; gap: 1rem; } .contact-right-box { min-height: auto; } }
 @media (max-width: 768px) { .competences-display { padding: 3rem 1.5rem; } .grid-competences { grid-template-columns: repeat(2, 1fr); } }
+
+
+/* ==========================================================================
+   9. CORRECTIFS RESPONSIVE FINAUX
+   ========================================================================== */
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .cert-grid, .contact-main-wrapper {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.6rem; }
+    
+    /* Masquer certains éléments trop encombrants sur mobile si besoin */
+    .hero-scroll { display: none; }
+}
+
+@media (max-width: 480px) {
+    .header-box { margin-bottom: 2rem; }
+    .card { padding: 1.5rem; }
+    .hero-cta { flex-direction: column; width: 100%; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+}
+
+/* ==========================================================================
+   FIX : MENU MOBILE (Empêcher le menu vertical de prendre toute la page)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    /* On force le menu à rester horizontal en haut, même au scroll */
+    nav.scrolled {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        flex-direction: row !important; /* Retour à l'horizontale */
+        width: 100% !important;
+        height: auto !important;
+        padding: 0.8rem 1.5rem !important;
+        border-radius: 0 !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+    }
+
+    /* On réaffiche le logo sur mobile pour l'équilibre visuel */
+    nav.scrolled .nav-logo {
+        display: block !important;
+    }
+
+    /* On aligne les liens horizontalement et on réduit l'écart */
+    nav.scrolled .nav-links {
+        flex-direction: row !important;
+        gap: 1rem !important;
+    }
+
+    /* On cache les sous-menus (Compétences) sur mobile pour éviter qu'ils ne décalent tout */
+    /* Ils ne s'afficheront qu'au clic ou on peut les désactiver sur petit écran */
+    nav.scrolled .sub-menu {
+        display: none !important;
+    }
+
+    /* Optionnel : réduire la taille du texte des liens pour que tout tienne */
+    .nav-links a {
+        font-size: 0.6rem !important;
+    }
+}

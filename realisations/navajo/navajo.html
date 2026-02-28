@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Détails AP – Nathan Barbirato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="../../index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
+    <ul class="nav-links">
+        <li><a href="../../index.html#accueil">Accueil</a></li>
+        <li><a href="../../index.html#about">Présentation</a></li>
+        <li><a href="../../realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a>
+            <ul class="sub-menu">
+                <li><a href="../../realisations.html#annee1">Première Année</a></li>
+                <li><a href="../../realisations.html#annee2">Deuxième Année</a></li>
+            </ul>
+        </li>
+        <li><a href="../../stages.html">Stages</a></li>
+        <li><a href="../../competences.html">Compétences</a></li>
+        <li><a href="../../veille.html">Veille</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <section id="project-hero" class="reveal">
+        <div class="back-nav">
+            <a href="../../realisations.html" class="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Retour aux réalisations
+            </a>
+        </div>
+        
+        <span class="hero-tag">BTS SIO SISR · Atelier Professionnalisation</span>
+        <h1 style="font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1;">AP 3.1 <br/><span>Navajo</span></h1>
+        
+        <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--muted); max-width: 600px;">
+            Admin réseau LAN (DNS + DHCP). Mise en place d'une passerelle à 3 pattes LAN-WAN avec routage statique et NTP.
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="reveal">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Livrables & <span>Documentation</span></h2>
+        <div class="grid-2">
+            <a href="../../realisations/navajo/livrable.html" class="card" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px;">
+                <div style="font-size: 2.5rem;">📂</div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Livrables</h3>
+                    <span class="btn btn-mini">Consulter</span>
+                </div>
+            </a>
+            <a href="../../realisations/navajo/doc.html" class="card" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px;">
+                <div style="font-size: 2.5rem;">🛠️</div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Dossier Technique</h3>
+                    <span class="btn btn-mini">Consulter</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="reveal" style="padding-bottom: 8rem;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Journal de bord</h2>
+        <div class="card log-card">
+            <h3>Travaux réalisés</h3>
+            <p style="color: var(--muted); line-height: 1.8;">
+
+<section id="journal">
+    <div class="header-box">
+        <h1>Journal de <span>Bord</span></h1>
+        <p class="subtitle">Nathan Barbirato — Projet Navajo 2025</p>
+        <div class="divider-small"></div>
+    </div>
+
+    <div class="grid-2">
+    <article class="card">
+        <div class="cert-date">Séance 1</div>
+        <h3>Infrastructure & DNS</h3>
+        <p>Analyse du CDC Navajo et préparation de la VM Debian 12 (REZOLAB). Installation de Bind9 et configuration initiale du fichier <code>named.conf.options</code>.</p>
+    </article>
+    <article class="card">
+        <div class="cert-date">Séance 2</div>
+        <h3>Zones DNS Directes & Inverses</h3>
+        <p>Création de la zone <code>galaxy-swiss.lan</code> et des zones inverses (16.172 et 18.172). Tests de résolution avec nslookup et vérification des logs Bind9.</p>
+    </article>
+    <article class="card">
+        <div class="cert-date">Séance 3</div>
+        <h3>Service DHCP</h3>
+        <p>Installation de ISC-DHCP-Server. Configuration des étendues dans <code>dhcpd.conf</code> pour les VLANs du projet. Mise en place de l'authoritative server.</p>
+    </article>
+    <article class="card">
+        <div class="cert-date">Séance 4</div>
+        <h3>Validation & Baux</h3>
+        <p>Vérification de l'attribution des adresses IP aux clients. Analyse du fichier <code>dhcpd.leases</code> pour confirmer la distribution des baux et finalisation du Trello.</p>
+    </article>
+</div>
+</section>
+
+            </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

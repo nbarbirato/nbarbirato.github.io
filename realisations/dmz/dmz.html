@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Détails AP – Nathan Barbirato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="../../index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
+    <ul class="nav-links">
+        <li><a href="../../index.html#accueil">Accueil</a></li>
+        <li><a href="../../index.html#about">Présentation</a></li>
+        <li><a href="../../realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a>
+            <ul class="sub-menu">
+                <li><a href="../../realisations.html#annee1">Première Année</a></li>
+                <li><a href="../../realisations.html#annee2">Deuxième Année</a></li>
+            </ul>
+        </li>
+        <li><a href="../../stages.html">Stages</a></li>
+        <li><a href="../../competences.html">Compétences</a></li>
+        <li><a href="../../veille.html">Veille</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <section id="project-hero" class="reveal">
+        <div class="back-nav">
+            <a href="../../realisations.html" class="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Retour aux réalisations
+            </a>
+        </div>
+        
+        <span class="hero-tag">BTS SIO SISR · Atelier Professionnalisation</span>
+        <h1 style="font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1;">AP 4.1 <br/><span>DMZ</span></h1>
+        
+        <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--muted); max-width: 600px;">
+            Admin passerelle dorsale (routage + DHCP + filtrage). Déploiement base MariaDB et serveur WebR sous Debian 12.
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="reveal">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Livrables & <span>Documentation</span></h2>
+        <div class="grid-2">
+            <a href="../../realisations/dmz/livrable.html" class="card" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px;">
+                <div style="font-size: 2.5rem;">📂</div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Livrables</h3>
+                    <span class="btn btn-mini">Consulter</span>
+                </div>
+            </a>
+            <a href="../../realisations/dmz/doc.html" class="card" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 20px;">
+                <div style="font-size: 2.5rem;">🛠️</div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Dossier Technique</h3>
+                    <span class="btn btn-mini">Consulter</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="reveal" style="padding-bottom: 8rem;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Journal de bord</h2>
+        <div class="card log-card">
+            <h3>Travaux réalisés</h3>
+            <p style="color: var(--muted); line-height: 1.8;">
+
+<section id="journal">
+    <div class="header-box">
+        <h1>Journal de <span>Bord</span></h1>
+        <p class="subtitle">Nathan Barbirato — AP DMZ 2026</p>
+        <div class="divider-small"></div>
+    </div>
+
+    <div class="grid-2">
+        <article class="card">
+            <div class="cert-date">Séance 1</div>
+            <h3>Infrastructure & Interfaces</h3>
+            <p>Installation de pfSense 2.8.0 (Bgtw1). Configuration des 5 interfaces réseau : PUB1 (10.54.1.254), PRIV1 (172.31.1.254), ADM1 (192.168.101.254), USR1 (172.17.255.254) et DEV1 (192.168.1.254). Utilisation d'un script pour activer la 5ème patte réseau.</p>
+        </article>
+
+        <article class="card">
+            <div class="cert-date">Séance 2</div>
+            <h3>Services IP & DHCP</h3>
+            <p>Déploiement du serveur Kea DHCP. Définition des plages d'adresses : .10 à .200 pour ADM1 (192.168.101.0/24) et DEV1 (192.168.1.0/24), et 172.17.1.10 à 172.17.1.200 pour USR1. Vérification de la connectivité et du routage via l'interface d'administration.</p>
+        </article>
+
+        <article class="card">
+            <div class="cert-date">Séance 3</div>
+            <h3>DNS & Autorité de Certification</h3>
+            <p>Activation du DNS Forwarder (dnsmasq) sur les interfaces internes. Création de l'Autorité de Certification "M2L-CA" (auto-signée). Génération des certificats serveurs pour Bgtw1, Fgtw1, Bdd1 et Web1, valides jusqu'en 2035.</p>
+        </article>
+
+        <article class="card">
+            <div class="cert-date">Séance 4</div>
+            <h3>Sécurisation & PKI Client</h3>
+            <p>Génération des certificats clients pour les accès VPN (adm.vpna et dev.vpnd). Sécurisation du pare-feu avec la règle "Anti-Lockout" sur l'interface ADM1 et configuration de règles "TOUT PASSE" pour valider les flux inter-zones. Désactivation du NAT Outbound sur la passerelle Bgtw.</p>
+        </article>
+    </div>
+</section>
+</main>
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show'); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

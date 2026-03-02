@@ -218,4 +218,28 @@ h1 span { color: var(--accent); }
         justify-content: space-between !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
     }
+
+    nav.scrolled .nav-logo {
+        display: block !important;
+    }
+
+    nav.scrolled .nav-links {
+        flex-direction: row !important;
+        gap: 1rem !important;
+    }
+
+    nav.scrolled .sub-menu {
+        display: none !important;
+    }
+
+    .nav-links a {
+        font-size: 0.7rem !important;
+    }
+
+    /* Important : On annule la marge gauche du contenu principal */
+    main, section, .container {
+        margin-left: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
 }

@@ -243,3 +243,58 @@ h1 span { color: var(--accent); }
         padding-right: 1rem !important;
     }
 }
+
+
+/*LIVRABLES ET DOSSIER TECHNIQUE */
+
+/* Conteneur de la liste avec défilement */
+.scroll-list {
+    max-height: 250px; /* Ajuste la hauteur selon tes besoins */
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Style de la glissière (Scrollbar) moderne */
+.scroll-list::-webkit-scrollbar {
+    width: 6px;
+}
+.scroll-list::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 10px;
+}
+.scroll-list::-webkit-scrollbar-thumb {
+    background: var(--border); /* Couleur discrète par défaut */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.scroll-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent); /* Devient bleu ciel au survol */
+}
+
+/* Ajustement des boutons pour la liste */
+.scroll-list .btn {
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+}
+
+/* Force le badge PDF à ne pas s'étirer */
+.scroll-list .btn-mini {
+    width: auto !important; /* Empêche le badge de prendre toute la largeur */
+    min-width: 45px;       /* Garde une taille minimale pour la lisibilité */
+    padding: 2px 8px !important; /* Réduit l'espace interne */
+    flex-shrink: 0;        /* Empêche le badge de s'écraser si le texte est long */
+    margin-left: 15px;     /* Espace entre le texte et le badge */
+    font-size: 0.65rem;    /* Texte légèrement plus petit */
+}
+
+/* Optionnel : Améliore l'alignement du texte à gauche */
+.scroll-list .btn span:first-child {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Coupe le texte proprement s'il est trop long */
+}

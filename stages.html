@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Certifications – Nathan BARBIRATO</title>
+    <title>Stages – Nathan BARBIRATO</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour les listes de documents */
+        .scroll-list {
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .scroll-list::-webkit-scrollbar { width: 6px; }
+        .scroll-list::-webkit-scrollbar-track { background: var(--bg); }
+        .scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        .scroll-list::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .scroll-list .btn {
+            width: 100%;
+            justify-content: space-between;
+            text-align: left;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .scroll-list .btn-mini {
+            width: auto !important;
+            min-width: 45px;
+            padding: 2px 8px !important;
+            flex-shrink: 0;
+            margin-left: 15px;
+            font-size: 0.7rem;
+        }
+
+        /* Initialisation pour les animations reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
@@ -16,77 +61,169 @@
         <li><a href="index.html#about">Présentation</a></li>
         <li><a href="index.html#tableau">Tableau de Synthèse</a></li>
         <li><a href="realisations.html">Réalisations</a></li>
-        <li><a href="stages.html">Stages</a></li>
+        <li><a href="stages.html" class="active">Stages</a></li>
         <li><a href="competences.html">Compétences</a></li>
         <li><a href="veille.html">Veille</a></li>
         <li><a href="index.html#contact">Contact</a></li>
     </ul>
 </nav>
 
-<section id="stages">
-        <br>
-    <br>
-    <br>
-
-    <div class="header-box">
+<section id="stages" style="padding-top: 150px; padding-bottom: 100px;">
+    
+    <div class="header-box reveal">
         <h1>Mes <span>Stages</span></h1>
         <p class="subtitle">Nathan Barbirato — Parcours BTS SIO SISR</p>
     </div>
-    <br>
-    <br>
-    <div class="stage-container">
-        <h2 style="margin-bottom: 2rem;">Stage 1ère Année <span style="color: var(--accent);">— CEREALOG</span></h2>
+
+    <div class="stage-container reveal" style="margin-top: 5rem; padding: 0 5%;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Stage 1ère Année <span style="color: var(--accent);">— CEREALOG</span></h2>
         
         <div class="grid-2">
-<article class="card">
-    <h3>Partie Projet : Réalisations Techniques</h3>
-    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">
-        Découvrez les détails de mon projet sur la virtualisation haute disponibilité, le stockage SAN et les solutions de sauvegarde.
-    </p>
-    <a href="stage1/projet-technique1.html" class="btn" style="width: 100%; justify-content: center; background: var(--dark); color: white; text-decoration: none; display: flex; padding: 10px; border-radius: 5px; font-weight: bold;">
-        🛠️ VOIR LES PROJETS TECHNIQUES
-    </a>
-</article>
+            <div class="card" style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 2.5rem;">📂</div>
+                    <h3 style="font-size: 1.1rem;">Partie École : Livrables</h3>
+                </div>
+                
+                <div class="scroll-list">
+                    <a href="stage1/Journal de Bord.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Journal de Bord</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Tableau-de-compétence.xlsx - Tableau de synthèse Épreuve E5.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Tableau de Synthèse</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Dossier de Contexte - BARBIRATO Nathan.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Dossier Contexte</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Fiche de RP - Proxmox.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Fiche RP - Proxmox</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Fiche de RP-environnement réseau.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Fiche RP - Environnement Réseau</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                </div>
+            </div>
 
-            <article class="card">
-                <h3>Partie École : Livrables</h3>
-                <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem;">
-                    Accédez aux documents administratifs, dossiers de contexte et tableaux de compétences.
-                </p>
-                <a href="stage1/document-ecole1.html" class="btn" style="width: 100%; justify-content: center; background: var(--accent); color: var(--dark); text-decoration: none; display: flex; padding: 10px; border-radius: 5px; font-weight: bold;">
-                    📂 OUVRIR LE DOSSIER ÉCOLE
-                </a>
-            </article>
+            <div class="card" style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 2.5rem;">🛠️</div>
+                    <h3 style="font-size: 1.1rem;">Réalisations Techniques</h3>
+                </div>
+                
+                <div class="scroll-list">
+                    <a href="stage1/Compte rendu.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Compte rendu global</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Déplacer les fichiers de configuration.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Déplacer les fichiers de configuration</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu -Problème IP.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Problème IP</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Configuration Multipath.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Configuration Multipath</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Attacher un volume sur la windows.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Attacher un volume sur Windows</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Augmentation Volume SAN.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Augmentation Volume SAN</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Installation de Veeam.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Installation de Veeam</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Compte rendu - Sauvegarde et Restauration.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Sauvegarde et Restauration</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage1/Schéma réseau.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Schéma Réseau</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-
-    <div class="stage-container">
-        <h2 style="margin-bottom: 2rem;">Stage 2ère Année <span style="color: var(--accent);">— CEREALOG</span></h2>
+    <div class="stage-container reveal" style="margin-top: 8rem; padding: 0 5%;">
+        <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Stage 2ème Année <span style="color: var(--accent);">— CEREALOG</span></h2>
         
         <div class="grid-2">
-<article class="card">
-    <h3>Partie Projet : Réalisations Techniques</h3>
-    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">
-        Découvrez les détails de mon projet sur la virtualisation haute disponibilité, le stockage SAN et les solutions de sauvegarde.
-    </p>
-    <a href="stage2/projet-technique1.html" class="btn" style="width: 100%; justify-content: center; background: var(--dark); color: white; text-decoration: none; display: flex; padding: 10px; border-radius: 5px; font-weight: bold;">
-        🛠️ VOIR LES PROJETS TECHNIQUES
-    </a>
-</article>
+            <div class="card" style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 2.5rem;">📂</div>
+                    <h3 style="font-size: 1.1rem;">Partie École : Livrables</h3>
+                </div>
+                
+                <div class="scroll-list">
+                    <a href="stage1/Journal de Bord.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Journal de Bord</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="assets/Tableau-de-compétence.xlsx - Tableau de synthèse Épreuve E5.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Tableau de Synthèse</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage2/Dossier de Contexte.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Dossier Contexte</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Fiche de RP - Proxmox.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Fiche RP - Proxmox</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                    <a href="stage1/Fiche de RP-environnement réseau.pdf" target="_blank" class="btn btn-ghost">
+                        <span>Fiche RP - Environnement Réseau</span>
+                        <span class="btn btn-mini">PDF</span>
+                    </a>
+                </div>
+            </div>
 
-            <article class="card">
-                <h3>Partie École : Livrables</h3>
-                <p style="font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem;">
-                    Accédez aux documents administratifs, dossiers de contexte et tableaux de compétences.
-                </p>
-                <a href="stage2/document-ecole1.html" class="btn" style="width: 100%; justify-content: center; background: var(--accent); color: var(--dark); text-decoration: none; display: flex; padding: 10px; border-radius: 5px; font-weight: bold;">
-                    📂 OUVRIR LE DOSSIER ÉCOLE
-                </a>
-            </article>
+            <div class="card" style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 2.5rem;">⚙️</div>
+                    <h3 style="font-size: 1.1rem;">Réalisations Techniques</h3>
+                </div>
+                
+                <div class="scroll-list">
+                    <a href="stage2/ha-avancee.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Virtualisation & Haute Dispo</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage2/veeam-backup.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Sauvegarde Veeam</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage2/ha-avancee.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Virtualisation & Haute Dispo</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage2/veeam-backup.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Sauvegarde Veeam</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage2/ha-avancee.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Virtualisation & Haute Dispo</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                    <a href="stage2/veeam-backup.pdf" target="_blank" class="btn btn-dark" style="background: var(--dark); color: white;">
+                        <span>Sauvegarde Veeam</span>
+                        <span class="btn btn-mini" style="background: var(--accent); color: var(--dark);">PDF</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -96,12 +233,25 @@
 </div>
 
 <script>
+    // Navigation scrolled & Back to top
     window.addEventListener('scroll', function() {
         const nav = document.getElementById('mainNav');
         const btt = document.getElementById('backToTop');
-        nav.classList.toggle('scrolled', window.scrollY > 150);
+        nav.classList.toggle('scrolled', window.scrollY > 100);
         btt.classList.toggle('show', window.scrollY > 400);
     });
+
+    // Script Reveal pour activer l'affichage au défilement
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tableau de Synthèse – Nathan BARBIRATO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Initialisation pour les animations reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .divider-small {
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+    <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO</a>
+    <ul class="nav-links">
+        <li><a href="index.html#accueil">Accueil</a></li>
+        <li><a href="index.html#about">Présentation</a></li>
+        <li><a href="tableau.html" class="active">Tableau de Synthèse</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="stages.html">Stages</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="tableau" style="padding-top: 150px; min-height: 80vh; padding-left: 5%; padding-right: 5%;">
+    <div class="reveal">
+        <div class="header-box">
+            <h1>Tableau de <span>Synthèse</span></h1>
+            <p class="subtitle">Récapitulatif officiel des compétences — Épreuve E5</p>
+            <div class="divider-small"></div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Session 2026</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Parcours SISR<br>Lycée Gustave Eiffel</p>
+            </div>
+
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">📁</div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Réalisations</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">7 AP en formation validées<br>2 Stages en entreprise</p>
+            </div>
+
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">✅</div>
+                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Compétences</h3>
+                <p style="font-size: 0.85rem; color: var(--muted);">Blocs 1, 2, 3, 4, 5 et 6<br>Référentiel BTS SIO</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="assets/Tableau-de-compétence.xlsx - Tableau de synthèse Épreuve E5.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-primary" 
+                style="gap: 12px; padding: 1rem 2.5rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: bold;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Consulter le Tableau de Synthèse (PDF)
+            </a>
+        </div>
+    </div>
+</section>
+    <div class="divider"></div>
+
+    <div class="pagination-container reveal">
+        <a href="index.html" class="btn btn-pagination" style="text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; display: flex; align-items: center; gap: 10px; color: var(--text);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Précédent : Accueil
+        </a>
+        
+        <a href="realisations.html" class="btn btn-pagination" style="text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; display: flex; align-items: center; gap: 10px; color: var(--text);">
+            Suivant : Réalisations
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+    </div>
+
+
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 30px; right: 30px; cursor: pointer; opacity: 0; transition: 0.3s;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</div>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('mainNav');
+        const btt = document.getElementById('backToTop');
+        nav.classList.toggle('scrolled', window.scrollY > 100);
+        btt.style.opacity = window.scrollY > 400 ? "1" : "0";
+    });
+
+    // SCRIPT REVEAL : Active l'affichage au défilement
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

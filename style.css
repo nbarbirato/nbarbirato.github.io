@@ -494,3 +494,157 @@ h1 span { color: var(--accent); }
     }
 }
 
+/* Grille responsive qui s'adapte à la largeur de l'écran */
+.grid-responsive {
+    display: grid;
+    /* On utilise minmax(300px, 1fr) : si l'écran fait moins de 600px, les cartes s'empilent automatiquement */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+}
+
+/* Correctif pour les mobiles très étroits */
+@media (max-width: 480px) {
+    .grid-responsive {
+        grid-template-columns: 1fr; /* Force une seule colonne */
+        gap: 1.5rem;
+    }
+    
+    .card {
+        padding: 1.5rem !important; /* Réduit le padding interne pour gagner de la place */
+    }
+
+    #stages {
+        padding-top: 100px !important; /* Ajuste le haut de page */
+    }
+}
+
+
+
+
+
+
+
+
+/* DOCK DE NAVIGATION AP (DROITE) */
+.ap-dock {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+    padding: 15px 8px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 100px; /* Forme pilule verticale */
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+}
+
+.ap-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.ap-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--muted);
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Bulle d'information flottante */
+.ap-tooltip {
+    position: absolute;
+    right: 50px;
+    background: var(--dark);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+    pointer-events: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Interactions au survol */
+.ap-item:hover .ap-circle {
+    border-color: var(--accent);
+    color: var(--dark);
+    transform: scale(1.15);
+    background: #fff;
+}
+
+.ap-item:hover .ap-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ÉTAT ACTIF (Page en cours) */
+.ap-item.active .ap-circle {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--dark);
+    box-shadow: 0 0 20px rgba(154, 200, 235, 0.5);
+    animation: ap-pulse 2s infinite;
+}
+
+.ap-item.active .ap-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+    background: var(--accent);
+    color: var(--dark);
+}
+
+/* Animation de respiration pour l'AP active */
+@keyframes ap-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(154, 200, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0); }
+}
+
+/* Masquer sur tablette/mobile pour la clarté */
+@media (max-width: 1100px) {
+    .ap-dock { display: none; }
+}
+
+/* Séparateur entre le retour et les AP */
+.ap-separator {
+    width: 20px;
+    height: 1px;
+    background: var(--border);
+    margin: 4px auto;
+}
+
+/* Style spécifique pour le bouton Home */
+.home-circle {
+    background: var(--dark) !important;
+    color: var(--accent) !important;
+    border-color: var(--dark) !important;
+}
+
+.ap-item:hover .home-circle {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
+    border-color: var(--accent) !important;
+}

@@ -7,39 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles spécifiques pour les listes de documents */
-        .scroll-list {
-            max-height: 280px;
-            overflow-y: auto;
-            padding-right: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .scroll-list::-webkit-scrollbar { width: 6px; }
-        .scroll-list::-webkit-scrollbar-track { background: var(--bg); }
-        .scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-        .scroll-list::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-        .scroll-list .btn {
-            width: 100%;
-            justify-content: space-between;
-            text-align: left;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .scroll-list .btn-mini {
-            width: auto !important;
-            min-width: 45px;
-            padding: 2px 8px !important;
-            flex-shrink: 0;
-            margin-left: 15px;
-            font-size: 0.7rem;
-        }
-
         /* Initialisation pour les animations reveal */
         .reveal {
             opacity: 0;
@@ -61,7 +28,12 @@
         <li><a href="index.html#about">Présentation</a></li>
         <li><a href="index.html#tableau">Tableau de Synthèse</a></li>
         <li><a href="realisations.html">Réalisations</a></li>
-        <li><a href="stages.html" class="active">Stages</a></li>
+        <li><a href="stages.html" class="active">Stages</a>
+            <ul class="sub-menu">
+                <li><a href="#stage1">Stage 1ère année</a></li>
+                <li><a href="#stage2">Stage 2ème année</a></li>
+            </ul>
+        </li>
         <li><a href="competences.html">Compétences</a></li>
         <li><a href="veille.html">Veille</a></li>
         <li><a href="index.html#contact">Contact</a></li>
@@ -71,11 +43,12 @@
 <section id="stages" style="padding-top: 150px; padding-bottom: 100px;">
     
     <div class="header-box reveal">
+        <span class="hero-tag">Livrables & Réalisations Techniques</span>
         <h1>Mes <span>Stages</span></h1>
         <p class="subtitle">Nathan Barbirato — Parcours BTS SIO SISR</p>
     </div>
 
-    <div class="stage-container reveal" style="margin-top: 5rem; padding: 0 5%;">
+    <div class="stage1" style="margin-top: 5rem; padding: 0 5%;">
         <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Stage 1ère Année <span style="color: var(--accent);">— CEREALOG</span></h2>
         
         <div class="grid-2">
@@ -157,7 +130,7 @@
         </div>
     </div>
 
-    <div class="stage-container reveal" style="margin-top: 8rem; padding: 0 5%;">
+    <div class="stage2" style="margin-top: 8rem; padding: 0 5%;">
         <h2 style="font-family: var(--font-display); margin-bottom: 2rem;">Stage 2ème Année <span style="color: var(--accent);">— CEREALOG</span></h2>
         
         <div class="grid-2">

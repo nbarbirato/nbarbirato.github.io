@@ -244,6 +244,33 @@ h1 span { color: var(--accent); }
     }
 }
 
+@media (max-width: 768px) {
+    section { padding: 5rem 1rem 3rem !important; }
+}
+
+@media (max-width: 480px) {
+    .grid-program, .cert-grid { 
+        grid-template-columns: 1fr !important; 
+    }
+    .skills-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important; 
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    nav, nav.scrolled { 
+        flex-direction: column !important; 
+        padding: 1rem !important;
+    }
+    .nav-links { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem !important;
+        margin-top: 10px;
+    }
+}
 
 /*LIVRABLES ET DOSSIER TECHNIQUE */
 
@@ -297,4 +324,44 @@ h1 span { color: var(--accent); }
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; /* Coupe le texte proprement s'il est trop long */
+}
+
+/* ==========================================================================
+   PATCH CORRECTIF MOBILE (À placer à la toute fin)
+   ========================================================================== */
+@media (max-width: 600px) {
+    /* 1. Empêcher tout débordement résiduel */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        position: relative;
+    }
+
+    /* 2. Ajuster le titre H1 (évite le texte coupé) */
+    h1 {
+        font-size: 1.8rem !important; /* Taille réduite pour mobile */
+        line-height: 1.2 !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: left;
+    }
+
+    /* 3. Passer les compétences sur UNE seule colonne */
+    .grid-competences {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* 4. Ajuster les cartes de navigation des compétences */
+    .card-nav {
+        padding: 1.5rem 1rem !important;
+    }
+
+    /* 6. Sécuriser la flèche retour en haut */
+    #backToTop {
+        right: 10px !important;
+        bottom: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
 }

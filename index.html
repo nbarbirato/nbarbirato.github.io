@@ -224,15 +224,27 @@
     mainNav = document.getElementById('mainNav'), 
     btt = document.getElementById('backToTop');
 
-    // Gestion du Splash Screen
-    if (sessionStorage.getItem('splashViewed')) splash.style.display = 'none';
+    // Gestion du Splash Screen et de la Nav
+    if (sessionStorage.getItem('splashViewed')) {
+        splash.style.display = 'none';
+        mainNav.style.opacity = '1';
+        mainNav.style.pointerEvents = 'auto'; // Corrigé ici
+    }
+
     enterBtn.addEventListener('click', () => { 
         splash.classList.add('hide'); 
         sessionStorage.setItem('splashViewed', 'true'); 
+        
+        // Apparition fluide de la nav lors de l'entrée
+        setTimeout(() => {
+            mainNav.style.opacity = '1';
+            mainNav.style.pointerEvents = 'auto'; // Corrigé ici
+        }, 500); 
+
         setTimeout(() => splash.style.display = 'none', 1200); 
     });
 
-    // Gestion du Scroll (Nav & Bouton Retour)
+    // Reste du script (Scroll & Reveal)
     window.addEventListener('scroll', function() {
         if (window.scrollY > 150) mainNav.classList.add('scrolled'); else mainNav.classList.remove('scrolled');
         if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show');
@@ -245,7 +257,7 @@
 
         links.forEach(l => { 
             const href = l.getAttribute('href');
-            if (href === '#' + current || (current === 'about' && href === '#about') || (current === 'experiences' && href === '#about')) {
+            if (href === '#' + current || (current === 'about' && href === '#about')) {
                 l.style.color = 'var(--accent)';
                 l.style.fontWeight = '800'; 
             } else {
@@ -255,7 +267,6 @@
         });
     });
 
-    // Animations d'apparition (Reveal)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });

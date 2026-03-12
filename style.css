@@ -62,12 +62,49 @@ ul { list-style: none !important; }
 .sub-menu a:hover { color: var(--dark) !important; background: var(--accent); padding-left: 1.8rem; transform: translateX(5px); }
 .nav-links > li:hover .sub-menu { display: flex; }
 
-nav.scrolled { top: 50%; left: 3rem; right: auto; transform: translateY(-50%); flex-direction: column; padding: 3.5rem 2.5rem; border: 1px solid var(--border); border-radius: 30px; background: var(--card); box-shadow: 0 15px 45px rgba(0,0,0,0.08); width: auto; align-items: flex-start; backdrop-filter: blur(10px); }
-nav.scrolled .nav-logo { display: none; }
-nav.scrolled .nav-links { flex-direction: column; gap: 1.2rem; align-items: flex-start; }
-nav.scrolled .nav-links a::after { display: none; }
-nav.scrolled .sub-menu { position: static; transform: none; display: flex; flex-direction: column; border: none; box-shadow: none; padding: 0 0 0 1.5rem; margin-top: 0.4rem; background: transparent; }
+nav.scrolled { 
+    top: 50%; 
+    left: 2rem; /* Légèrement plus proche du bord */
+    right: auto; 
+    transform: translateY(-50%); 
+    flex-direction: column; 
+    padding: 2rem 1.5rem; /* Padding réduit pour plus de finesse */
+    border: 1px solid var(--border); 
+    border-radius: 30px; 
+    background: var(--card); 
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08); 
+    width: 260px; /* Largeur fixe pour ne plus prendre "la moitié de l'écran" */
+    align-items: flex-start; 
+    backdrop-filter: blur(10px); 
+}
 
+nav.scrolled .nav-logo { display: none; }
+
+nav.scrolled .nav-links { 
+    flex-direction: column; 
+    gap: 0.8rem; /* Espacement plus serré */
+    align-items: flex-start; 
+    width: 100%;
+}
+
+nav.scrolled .nav-links a {
+    font-size: 0.7rem;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+
+nav.scrolled .nav-links a::after { display: none; }
+
+nav.scrolled .sub-menu { 
+    position: static; 
+    transform: none; 
+    display: flex; 
+    flex-direction: column; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0 0 0 1rem; 
+    margin-top: 0.2rem; 
+    background: transparent; 
+}
 /* ==========================================================================
    4. STRUCTURE, SECTIONS ET BOUTONS
    ========================================================================== */
@@ -663,4 +700,11 @@ h1 span { color: var(--accent); }
     background: var(--accent) !important;
     color: var(--dark) !important;
     border-color: var(--accent) !important;
+}
+
+@media (min-width: 1101px) {
+    section {
+        margin-left: 300px !important; /* Décale le contenu pour laisser la place au menu */
+        transition: margin 0.5s ease;
+    }
 }

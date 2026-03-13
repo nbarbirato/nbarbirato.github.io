@@ -29,7 +29,7 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font-body); f
 @keyframes lineAnim { 0% { transform:scaleY(0); transform-origin:top; opacity:1; } 50% { transform:scaleY(1); transform-origin:top; opacity:1; } 100% { transform:scaleY(1); transform-origin:bottom; opacity:0; } }
 
 /* ==========================================================================
-   3. NAVIGATION ET MENUS
+   3. NAVIGATION ET MENUS (STANDARD)
    ========================================================================== */
 nav { 
     position: fixed; 
@@ -45,8 +45,8 @@ nav {
     backdrop-filter: blur(12px); 
     border-bottom: 1px solid var(--border); 
     transition: opacity 0.8s ease; 
-    opacity: 0; /* Ajouté : Menu invisible au départ */
-    pointer-events: none; /* Ajouté : Pas d'interaction pendant le splash */
+    opacity: 1; 
+    pointer-events: auto; 
 }
 ul { list-style: none !important; }
 .nav-logo { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--fg); }
@@ -62,36 +62,28 @@ ul { list-style: none !important; }
 .sub-menu a:hover { color: var(--dark) !important; background: var(--accent); padding-left: 1.8rem; transform: translateX(5px); }
 .nav-links > li:hover .sub-menu { display: flex; }
 
+/* ==========================================================================
+   4. NAVIGATION (SCROLLED / LATÉRALE)
+   ========================================================================== */
 nav.scrolled { 
     top: 50%; 
-    left: 2rem; /* Légèrement plus proche du bord */
+    left: 2rem; 
     right: auto; 
     transform: translateY(-50%); 
     flex-direction: column; 
-    padding: 2rem 1.5rem; /* Padding réduit pour plus de finesse */
+    padding: 2rem 1.5rem; 
     border: 1px solid var(--border); 
     border-radius: 30px; 
     background: var(--card); 
     box-shadow: 0 15px 45px rgba(0,0,0,0.08); 
-    width: 260px; /* Largeur fixe pour ne plus prendre "la moitié de l'écran" */
+    width: 260px; 
     align-items: flex-start; 
     backdrop-filter: blur(10px); 
 }
 
 nav.scrolled .nav-logo { display: none; }
-
-nav.scrolled .nav-links { 
-    flex-direction: column; 
-    gap: 0.8rem; /* Espacement plus serré */
-    align-items: flex-start; 
-    width: 100%;
-}
-
-nav.scrolled .nav-links a {
-    font-size: 0.7rem;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-}
-
+nav.scrolled .nav-links { flex-direction: column; gap: 0.8rem; align-items: flex-start; width: 100%; }
+nav.scrolled .nav-links a { font-size: 0.7rem; white-space: nowrap; }
 nav.scrolled .nav-links a::after { display: none; }
 
 nav.scrolled .sub-menu { 
@@ -105,8 +97,9 @@ nav.scrolled .sub-menu {
     margin-top: 0.2rem; 
     background: transparent; 
 }
+
 /* ==========================================================================
-   4. STRUCTURE, SECTIONS ET BOUTONS
+   5. STRUCTURE, SECTIONS ET BOUTONS
    ========================================================================== */
 section { padding: 8rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 h1 { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800; line-height: 1.05; }
@@ -127,7 +120,7 @@ h1 span { color: var(--accent); }
 .hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: var(--muted); }
 
 /* ==========================================================================
-   5. GRILLES ET CARTES (FORMATION & CERTIFS)
+   6. GRILLES ET CARTES (FORMATION & CERTIFS)
    ========================================================================== */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
@@ -159,7 +152,7 @@ h1 span { color: var(--accent); }
 .btn-mini:hover { transform: translateX(2px); filter: brightness(1.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
 
 /* ==========================================================================
-   6. COMPÉTENCES (SKILLS BOX & TABS)
+   7. COMPÉTENCES (SKILLS BOX & TABS)
    ========================================================================== */
 .header-box { text-align: left; margin-bottom: 5rem; animation: fadeIn 0.8s ease; }
 .subtitle { color: var(--muted); font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1rem; }
@@ -189,7 +182,7 @@ h1 span { color: var(--accent); }
 .tab-content.active { display: block; animation: tabReveal 0.7s cubic-bezier(0.2, 1, 0.3, 1); }
 
 /* ==========================================================================
-   7. CONTACT ET RÉSEAUX SOCIAUX
+   8. CONTACT ET RÉSEAUX SOCIAUX
    ========================================================================== */
 .contact-main-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 .contact-left-stack { display: flex; flex-direction: column; gap: 1rem; }
@@ -212,7 +205,7 @@ h1 span { color: var(--accent); }
 .icon-content:hover .tooltip { opacity: 1; visibility: visible; top: -50px; }
 
 /* ==========================================================================
-   8. EFFETS, SCROLL ET RESPONSIVE
+   9. EFFETS, SCROLL ET RESPONSIVE GÉNÉRAL
    ========================================================================== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -229,19 +222,12 @@ h1 span { color: var(--accent); }
 @media (max-width: 992px) { .contact-main-wrapper { grid-template-columns: 1fr; } .contact-row { flex-direction: column; align-items: flex-start; gap: 1rem; } .contact-right-box { min-height: auto; } }
 @media (max-width: 768px) { .competences-display { padding: 3rem 1.5rem; } .grid-competences { grid-template-columns: repeat(2, 1fr); } }
 
-
-/* ==========================================================================
-   9. CORRECTIFS RESPONSIVE FINAUX
-   ========================================================================== */
 @media (max-width: 768px) {
     .grid-2, .grid-3, .cert-grid, .contact-main-wrapper {
         grid-template-columns: 1fr !important;
     }
-    
     .nav-links { gap: 1rem; }
     .nav-links a { font-size: 0.6rem; }
-    
-    /* Masquer certains éléments trop encombrants sur mobile si besoin */
     .hero-scroll { display: none; }
 }
 
@@ -253,7 +239,7 @@ h1 span { color: var(--accent); }
 }
 
 /* ==========================================================================
-   FIX : MENU MOBILE (Activé dès 1350px pour libérer l'espace sur 1280px)
+   10. CORRECTIF MENU MOBILE (1350px)
    ========================================================================== */
 @media (max-width: 1350px) {
     nav.scrolled {
@@ -289,7 +275,6 @@ h1 span { color: var(--accent); }
         font-size: 0.7rem !important;
     }
 
-    /* Important : On annule la marge gauche du contenu principal */
     main, section, .container {
         margin-left: 0 !important;
         padding-left: 1rem !important;
@@ -325,11 +310,11 @@ h1 span { color: var(--accent); }
     }
 }
 
-/*LIVRABLES ET DOSSIER TECHNIQUE */
-
-/* Conteneur de la liste avec défilement */
+/* ==========================================================================
+   11. FONCTIONS SPÉCIFIQUES (LIVRABLES & DOCK)
+   ========================================================================== */
 .scroll-list {
-    max-height: 250px; /* Ajuste la hauteur selon tes besoins */
+    max-height: 250px; 
     overflow-y: auto;
     padding-right: 10px;
     display: flex;
@@ -337,374 +322,203 @@ h1 span { color: var(--accent); }
     gap: 12px;
 }
 
-/* Style de la glissière (Scrollbar) moderne */
-.scroll-list::-webkit-scrollbar {
-    width: 6px;
-}
-.scroll-list::-webkit-scrollbar-track {
-    background: var(--bg);
-    border-radius: 10px;
-}
-.scroll-list::-webkit-scrollbar-thumb {
-    background: var(--border); /* Couleur discrète par défaut */
-    border-radius: 10px;
-    transition: 0.3s;
-}
-.scroll-list::-webkit-scrollbar-thumb:hover {
-    background: var(--accent); /* Devient bleu ciel au survol */
-}
-
-/* Ajustement des boutons pour la liste */
-.scroll-list .btn {
-    width: 100%;
-    justify-content: space-between;
-    margin: 0;
-}
-
-/* Force le badge PDF à ne pas s'étirer */
-.scroll-list .btn-mini {
-    width: auto !important; /* Empêche le badge de prendre toute la largeur */
-    min-width: 45px;       /* Garde une taille minimale pour la lisibilité */
-    padding: 2px 8px !important; /* Réduit l'espace interne */
-    flex-shrink: 0;        /* Empêche le badge de s'écraser si le texte est long */
-    margin-left: 15px;     /* Espace entre le texte et le badge */
-    font-size: 0.65rem;    /* Texte légèrement plus petit */
-}
-
-/* Optionnel : Améliore l'alignement du texte à gauche */
-.scroll-list .btn span:first-child {
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Coupe le texte proprement s'il est trop long */
-}
+.scroll-list::-webkit-scrollbar { width: 6px; }
+.scroll-list::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
+.scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; transition: 0.3s; }
+.scroll-list::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+.scroll-list .btn { width: 100%; justify-content: space-between; margin: 0; }
+.scroll-list .btn-mini { width: auto !important; min-width: 45px; padding: 2px 8px !important; flex-shrink: 0; margin-left: 15px; font-size: 0.65rem; }
+.scroll-list .btn span:first-child { text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* ==========================================================================
-   9. CORRECTIFS RESPONSIVE FINAUX (Version Unifiée)
+   12. CORRECTIFS RESPONSIVE UNIFIÉS
    ========================================================================== */
-
-/* --- TOUS ÉCRANS MOBILES ET TABLETTES (< 768px) --- */
 @media (max-width: 768px) {
-    /* 1. PROTECTION UNIVERSELLE : Évite que le menu ne cache le haut des pages */
-    body {
-        padding-top: 100px !important; /* Espace de sécurité pour le menu fixe */
-        overflow-x: hidden !important;
-        width: 100% !important;
-        position: relative;
-    }
-
-    /* 2. NAVIGATION COMPACTE ET DÉFILANTE (Horizontal Scroll) */
+    /* 1. Structure de la barre : Logo à gauche, Liens à droite */
     nav, nav.scrolled {
-        position: fixed !important;
-        top: 0 !important; left: 0 !important; right: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-        padding: 8px 0 !important;
-        background: rgba(255, 255, 255, 0.98) !important;
-        backdrop-filter: blur(10px);
-        flex-direction: column !important;
-        border-bottom: 1px solid var(--border) !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
-        transform: none !important;
-        z-index: 9999 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
         align-items: center !important;
+        height: 60px !important;
+        padding: 0 15px !important;
+        width: 100% !important;
     }
 
     .nav-logo {
-        display: block !important;
-        font-size: 0.75rem !important;
-        margin-bottom: 4px !important;
-        font-weight: 700;
+        flex-shrink: 0 !important;
+        margin-right: 15px !important;
+        font-size: 0.65rem !important;
     }
 
+    /* 2. Zone coulissante : On force l'alignement au début pour voir Accueil */
     .nav-links {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
-        overflow-x: auto !important; /* Active le scroll horizontal */
-        width: 100% !important;
-        gap: 1.2rem !important;
-        padding: 5px 20px 10px !important;
-        justify-content: flex-start !important; /* Garde Accueil au début */
-        -webkit-overflow-scrolling: touch; /* Scroll fluide iOS */
+        justify-content: flex-start !important; /* Aligne les liens au début du scroll */
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        flex: 1 !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    /* Cache la barre de scroll pour le menu */
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Suppression des marges sur le premier élément pour qu'il soit bien au bord */
+    .nav-links li:first-child {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .nav-links li {
+        flex-shrink: 0 !important;
+    }
 
     .nav-links a {
-        font-size: 0.65rem !important;
+        font-size: 0.7rem !important;
         white-space: nowrap !important;
-        color: var(--muted) !important;
+        padding: 5px 0 !important;
     }
 
-    /* 3. ADAPTATION DES TITRES ET SECTIONS */
-    h1 {
-        font-size: 1.8rem !important;
-        line-height: 1.2 !important;
-        margin-top: 0 !important;
-    }
-
-    section, main, .container {
-        padding: 2rem 1.2rem !important; /* Espacement intérieur propre */
-    }
-
-    /* 4. GRILLES EN UNE SEULE COLONNE */
-    .grid-2, .grid-3, .grid-competences, .cert-grid, .contact-main-wrapper {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-    }
-
-    .card-nav { padding: 1.5rem 1rem !important; }
-
-    /* 5. BOUTON RETOUR EN HAUT MOBILE */
-    #backToTop {
-        right: 15px !important;
-        bottom: 15px !important;
-        width: 42px !important;
-        height: 42px !important;
-    }
+    /* 3. On cache les sous-menus et on nettoie la barre de scroll */
+    .nav-links::-webkit-scrollbar { display: none; }
+    .sub-menu, nav.scrolled .sub-menu { display: none !important; }
 }
 
-/* --- FIX SPLASH SCREEN (UNE SEULE LIGNE) --- */
-.splash-name {
-    font-size: clamp(1rem, 6.2vw, 8rem) !important;
-    white-space: nowrap !important;
-    letter-spacing: -0.05em !important;
-}
+.splash-name { font-size: clamp(1rem, 6.2vw, 8rem) !important; white-space: nowrap !important; letter-spacing: -0.05em !important; }
 
 @media (max-width: 480px) {
-    .splash-sub {
-        font-size: 0.55rem !important;
-        letter-spacing: 0.1em !important;
+    .splash-sub { font-size: 0.55rem !important; letter-spacing: 0.1em !important; }
+    .splash-btn { padding: 0.7rem 1.8rem !important; font-size: 0.65rem !important; }
+}
+
+/* ==========================================================================
+   13. PAGINATION ET GRILLE RESPONSIVE
+   ========================================================================== */
+.pagination-container { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 5rem; padding-bottom: 5rem; }
+.btn-pagination { display: flex; align-items: center; gap: 12px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 50px; color: var(--text); text-decoration: none; font-weight: 600; font-family: 'Syne', sans-serif; transition: all 0.3s ease; font-size: 0.9rem; }
+.btn-pagination:hover { background: var(--accent); color: var(--dark); border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+.btn-pagination svg { transition: transform 0.3s ease; }
+.btn-pagination:hover svg { transform: translateX(5px); }
+.btn-pagination:first-child:hover svg { transform: translateX(-5px); }
+
+@media (max-width: 600px) {
+    .pagination-container { flex-direction: column; gap: 15px; }
+    .btn-pagination { width: 100%; justify-content: center; }
+}
+
+.grid-responsive { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; width: 100%; }
+
+@media (max-width: 480px) {
+    .grid-responsive { grid-template-columns: 1fr; gap: 1.5rem; }
+    .card { padding: 1.5rem !important; }
+    #stages { padding-top: 100px !important; }
+}
+
+/* ==========================================================================
+   14. AP DOCK ET RELAIS
+   ========================================================================== */
+.ap-dock { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; padding: 15px 8px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); border-radius: 100px; border: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+.ap-item { position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.ap-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--card); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.65rem; font-weight: 800; color: var(--muted); transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1); }
+.ap-tooltip { position: absolute; right: 50px; background: var(--dark); color: white; padding: 6px 14px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1); pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.ap-item:hover .ap-circle { border-color: var(--accent); color: var(--dark); transform: scale(1.15); background: #fff; }
+.ap-item:hover .ap-tooltip { opacity: 1; transform: translateX(0); }
+.ap-item.active .ap-circle { background: var(--accent); border-color: var(--accent); color: var(--dark); box-shadow: 0 0 20px rgba(154, 200, 235, 0.5); animation: ap-pulse 2s infinite; }
+.ap-item.active .ap-tooltip { opacity: 1; transform: translateX(0); background: var(--accent); color: var(--dark); }
+
+@keyframes ap-pulse { 0% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(154, 200, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0); } }
+
+@media (max-width: 1100px) { .ap-dock { display: none; } }
+
+.ap-separator { width: 20px; height: 1px; background: var(--border); margin: 4px auto; }
+.home-circle { background: var(--dark) !important; color: var(--accent) !important; border-color: var(--dark) !important; }
+.ap-item:hover .home-circle { background: var(--accent) !important; color: var(--dark) !important; border-color: var(--accent) !important; }
+
+@media (min-width: 1101px) {
+    main {
+        /* On garde l'espace pour le menu à gauche */
+        padding-left: 280px; 
+        width: 100%;
     }
-    .splash-btn {
-        padding: 0.7rem 1.8rem !important;
-        font-size: 0.65rem !important;
+
+    section {
+        margin: 0 auto !important;
+        /* ON AUGMENTE ICI : de 1200px à 1450px */
+        max-width: 1450px !important; 
+        /* On réduit un peu le padding latéral pour gagner encore de la place */
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
     }
 }
 
+/* ==========================================================================
+   15. CORRECTIF FINAL : SOUS-MENU VERTICAL UNIFORME
+   ========================================================================== */
+nav.scrolled .sub-menu { 
+    position: static; transform: none; display: flex; flex-direction: column; border: none; box-shadow: none; padding: 0; margin-top: 0.5rem; background: transparent; width: 100%;
+}
+
+nav.scrolled .sub-menu a { 
+    display: block !important; width: 100% !important; padding: 0.8rem 1rem 0.8rem 1.5rem !important; border-radius: 12px; box-sizing: border-box; background: #fdfdfb; margin-bottom: 4px; transition: all 0.3s ease;
+}
+
+nav.scrolled .sub-menu a:hover { background: var(--accent) !important; color: var(--dark) !important; padding-left: 2rem !important; }
+
+/* FIX RADICAL SOUS-MENU */
+nav.scrolled .sub-menu { display: flex !important; flex-direction: column !important; width: 100% !important; padding: 0 !important; margin: 0.5rem 0 0 0 !important; position: static !important; background: transparent !important; border: none !important; box-shadow: none !important; }
+nav.scrolled .sub-menu a { display: block !important; width: 100% !important; padding: 0.8rem 1rem 0.8rem 2.5rem !important; margin: 2px 0 !important; background: #fdfdfb !important; border-radius: 12px !important; box-sizing: border-box !important; text-align: left !important; transition: all 0.3s ease !important; }
+nav.scrolled .sub-menu a:hover { background: var(--accent) !important; color: var(--dark) !important; padding-left: 3rem !important; }
+
+/* RESET TOTAL DU SOUS-MENU (FORCE SIDEBAR ONLY) */
+nav.scrolled .sub-menu { position: static !important; display: flex !important; flex-direction: column !important; transform: none !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; padding: 0 !important; margin: 0.5rem 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; visibility: visible !important; opacity: 1 !important; }
+nav.scrolled .sub-menu li { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+nav.scrolled .sub-menu a { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 10px 15px 10px 25px !important; margin: 2px 0 !important; background: #fdfdfb !important; border-radius: 10px !important; font-size: 0.65rem !important; white-space: normal !important; text-align: left !important; color: var(--muted) !important; }
+nav.scrolled .sub-menu a:hover, nav.scrolled .sub-menu a.active { background: var(--accent) !important; color: var(--dark) !important; transform: none !important; }
 
 
 /* ==========================================================================
-   10. BOUTON FIN DE PAGE
+   DERNIÈRE SECTION : MOBILE (DOIT RESTER ICI POUR TOUT ÉCRASER)
    ========================================================================== */
-
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin-top: 5rem;
-    padding-bottom: 5rem;
-}
-
-.btn-pagination {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 24px;
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-    font-family: 'Syne', sans-serif;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.btn-pagination:hover {
-    background: var(--accent);
-    color: var(--dark);
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.btn-pagination svg {
-    transition: transform 0.3s ease;
-}
-
-.btn-pagination:hover svg {
-    transform: translateX(5px);
-}
-
-.btn-pagination:first-child:hover svg {
-    transform: translateX(-5px);
-}
-
-/* Version mobile */
-@media (max-width: 600px) {
-    .pagination-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .btn-pagination {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* Grille responsive qui s'adapte à la largeur de l'écran */
-.grid-responsive {
-    display: grid;
-    /* On utilise minmax(300px, 1fr) : si l'écran fait moins de 600px, les cartes s'empilent automatiquement */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    width: 100%;
-}
-
-/* Correctif pour les mobiles très étroits */
-@media (max-width: 480px) {
-    .grid-responsive {
-        grid-template-columns: 1fr; /* Force une seule colonne */
-        gap: 1.5rem;
-    }
-    
-    .card {
-        padding: 1.5rem !important; /* Réduit le padding interne pour gagner de la place */
+@media (max-width: 768px) {
+    /* On cache les sous-menus quoi qu'il arrive sur mobile */
+    .sub-menu, 
+    nav.scrolled .sub-menu,
+    .nav-links li:hover .sub-menu { 
+        display: none !important; 
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 
-    #stages {
-        padding-top: 100px !important; /* Ajuste le haut de page */
+    /* On force la barre horizontale propre */
+    nav, nav.scrolled { 
+        position: fixed !important; 
+        top: 0 !important; 
+        left: 0 !important; 
+        right: 0 !important;
+        width: 100% !important; 
+        height: 60px !important; 
+        padding: 0 15px !important; 
+        background: #fff !important;
+        flex-direction: row !important; 
+        transform: none !important; 
+        align-items: center !important;
+        justify-content: space-between !important;
     }
-}
 
-
-
-
-
-
-
-
-/* DOCK DE NAVIGATION AP (DROITE) */
-.ap-dock {
-    position: fixed;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 100;
-    padding: 15px 8px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(12px);
-    border-radius: 100px; /* Forme pilule verticale */
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-}
-
-.ap-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.ap-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--card);
-    border: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--muted);
-    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-/* Bulle d'information flottante */
-.ap-tooltip {
-    position: absolute;
-    right: 50px;
-    background: var(--dark);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    pointer-events: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Interactions au survol */
-.ap-item:hover .ap-circle {
-    border-color: var(--accent);
-    color: var(--dark);
-    transform: scale(1.15);
-    background: #fff;
-}
-
-.ap-item:hover .ap-tooltip {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* ÉTAT ACTIF (Page en cours) */
-.ap-item.active .ap-circle {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--dark);
-    box-shadow: 0 0 20px rgba(154, 200, 235, 0.5);
-    animation: ap-pulse 2s infinite;
-}
-
-.ap-item.active .ap-tooltip {
-    opacity: 1;
-    transform: translateX(0);
-    background: var(--accent);
-    color: var(--dark);
-}
-
-/* Animation de respiration pour l'AP active */
-@keyframes ap-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(154, 200, 235, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0); }
-}
-
-/* Masquer sur tablette/mobile pour la clarté */
-@media (max-width: 1100px) {
-    .ap-dock { display: none; }
-}
-
-/* Séparateur entre le retour et les AP */
-.ap-separator {
-    width: 20px;
-    height: 1px;
-    background: var(--border);
-    margin: 4px auto;
-}
-
-/* Style spécifique pour le bouton Home */
-.home-circle {
-    background: var(--dark) !important;
-    color: var(--accent) !important;
-    border-color: var(--dark) !important;
-}
-
-.ap-item:hover .home-circle {
-    background: var(--accent) !important;
-    color: var(--dark) !important;
-    border-color: var(--accent) !important;
-}
-
-@media (min-width: 1101px) {
-    section {
-        margin-left: 300px !important; /* Décale le contenu pour laisser la place au menu */
-        transition: margin 0.5s ease;
+    .nav-links { 
+        display: flex !important; 
+        flex-direction: row !important; 
+        overflow-x: auto !important; 
+        white-space: nowrap !important; 
+        gap: 1.2rem !important;
+        height: 100% !important;
+        align-items: center !important;
     }
+
+    /* On s'assure que le contenu ne remonte pas sous la barre */
+    body { padding-top: 80px !important; }
+    h1 { font-size: 2rem !important; }
 }

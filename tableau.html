@@ -3,37 +3,94 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Tableau de Synthèse – Nathan BARBIRATO</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <title>Synthèse | Nathan Barbirato</title>
+    <link rel="icon" type="image/gif" href="icone/dossier-de-portfolio.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Initialisation pour les animations reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        /* --- AJUSTEMENT DU TITRE --- */
+        #synth-hero { 
+            height: auto; 
+            padding: 160px 5% 60px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .hero-title span { color: var(--accent); }
+
+        .synth-section { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding-bottom: 100px;
         }
 
-        .divider-small {
-            width: 50px;
-            height: 4px;
-            background: var(--accent);
-            margin: 1.5rem auto;
-            border-radius: 2px;
+        /* --- TABLEAU EN ENTIER (SANS SCROLL) --- */
+        .table-wrapper { 
+            width: 95%; 
+            max-width: 1600px; 
+            /* On supprime max-height et overflow pour afficher tout le tableau */
+            background: #fff; 
+            border-radius: 15px; 
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            position: relative;
         }
 
-        .pagination-container {
+        table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1400px; table-layout: fixed; }
+
+        /* Note: le mode Sticky est désactivé ici car le tableau n'est plus dans une boîte à scroll */
+        thead th { border: 1px solid #eee; font-size: 0.62rem; font-weight: 700; vertical-align: bottom; height: 350px; padding: 10px 2px; background: #fdfdfd; }
+        .vertical-text { writing-mode: vertical-rl; transform: rotate(180deg); text-align: left; white-space: nowrap; margin: 0 auto; color: #555; line-height: 1.1; }
+
+        .cat-th { height: auto; background: #f8f9fa !important; color: var(--accent); text-transform: uppercase; font-size: 0.58rem; padding: 12px 2px; letter-spacing: 0.5px; }
+
+        .col-project { width: 340px; text-align: left; padding-left: 20px; font-size: 0.8rem; font-weight: 700; border-right: 2px solid #eee; background: #fdfdfd; }
+
+        .col-period { width: 120px; text-align: center; font-size: 0.7rem; color: #888; background: #fff; }
+        .col-skill { width: 42px; }
+
+        .row-section { background: #fdfdfd; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; color: #111; }
+        .row-section td { padding: 12px 20px; border-bottom: 2px solid #eee; text-align: left; }
+
+        td { border: 1px solid #eee; height: 42px; vertical-align: middle; transition: 0.2s; text-align: center; background: #fff; }
+        tr:hover td { background: #fafafa; }
+
+        .checked { background-color: var(--accent) !important; position: relative; }
+        .checked::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.4; }
+
+        /* --- BOUTON PDF AMÉLIORÉ --- */
+        .pdf-action-container {
+            margin: 50px 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-top: 5rem;
-            padding-bottom: 5rem;
         }
+
+        .btn-pdf { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            padding: 16px 35px; 
+            background: var(--dark); 
+            color: white; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-pdf:hover { 
+            background: var(--accent);
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .legend { width: 95%; max-width: 1600px; margin-top: 20px; padding: 20px; background: #f9f9f9; border-radius: 10px; font-size: 0.8rem; font-weight: 600; color: #666; }
+        .box-blue { display: inline-block; width: 15px; height: 15px; background: var(--accent); vertical-align: middle; margin-right: 8px; border-radius: 3px; }
     </style>
 </head>
 <body>
@@ -42,101 +99,185 @@
     <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
     <ul class="nav-links">
         <li><a href="index.html#accueil">Accueil</a></li>
-        <li><a href="index.html#about">Présentation</a></li>
-        <li><a href="tableau.html" class="active" style="color: var(--accent); font-weight: 800;">Tableau de Synthèse</a></li>
-        <li><a href="realisations.html">Réalisations</a></li>
         <li><a href="stages.html">Stages</a></li>
-        <li><a href="competences.html">Compétences</a></li>
-        <li><a href="veille.html">Veille</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="tableau.html" style="color: var(--accent); font-weight: 800;">Tableau de Synthèse</a></li>
+        <li><a href="#contact" class="nav-contact-link">Contact</a></li>
     </ul>
 </nav>
 
-<section id="tableau" style="padding-top: 150px; min-height: 80vh; padding-left: 5%; padding-right: 5%;">
-    <div class="reveal">
-        <div class="header-box">
-            <span class="hero-tag">Compétences — Épreuve E5</span>
-            <h1>Tableau de <span>Synthèse</span></h1>
-            <p class="subtitle">Récapitulatif officiel des compétences — Épreuve E5</p>
-            <div class="divider-small"></div>
+<main>
+    <section id="synth-hero">
+        <div class="hero-content reveal">
+            <span class="hero-tag">Session 2026 · Option SISR</span>
+            <h1 class="hero-title">Tableau de<br/><span>Synthèse</span></h1>
+            <p class="hero-desc">Mise en relation des réalisations professionnelles avec le référentiel de compétences.</p>
+        </div>
+    </section>
+
+    <div class="synth-section reveal">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="col-project">Réalisations professionnelles</th>
+                        <th rowspan="2" class="col-period">Période</th>
+                        <th colspan="6" class="cat-th">Gérer le patrimoine informatique</th>
+                        <th colspan="3" class="cat-th">Répondre aux incidents / demandes</th>
+                        <th colspan="3" class="cat-th">Développer la présence en ligne</th>
+                        <th colspan="3" class="cat-th">Travailler en mode projet</th>
+                        <th colspan="3" class="cat-th">Mettre à disposition un service</th>
+                        <th colspan="4" class="cat-th">Organiser son dév. pro</th>
+                    </tr>
+                    <tr>
+                        <th class="col-skill"><div class="vertical-text">1.1.1 Recenser et identifier les ressources numériques</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.1.2 Exploiter des référentiels, normes et standards</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.1.3 Niveaux d'habilitation associés à un service</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.1.4 Continuité d'un service informatique</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.1.5 Gérer des sauvegardes</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.1.6 Respect des règles d'utilisation</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.2.1 Collecter, suivre et orienter des demandes</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.2.2 Traiter demandes (Res/Sys, applicatifs)</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.2.3 Traiter demandes concernant les applications</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.3.1 Valorisation de l'image sur les médias numériques</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.3.2 Référencer les services et mesurer leur visibilité</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.3.3 Participer à l'évolution d'un site Web</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.4.1 Analyser les objectifs et modalités</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.4.2 Planifier les activités</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.4.3 Évaluer les indicateurs de suivi</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.5.1 Réaliser les tests d'intégration</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.5.2 Déployer un service</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.5.3 Accompagner les utilisateurs</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.6.1 Environnement d'apprentissage personnel</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.6.2 Outils et stratégies de veille</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.6.3 Gérer son identité professionnelle</div></th>
+                        <th class="col-skill"><div class="vertical-text">1.6.4 Développer son projet professionnel</div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-section"><td colspan="25">Réalisation en cours de formation</td></tr>
+                    <tr>
+                        <td class="col-project">2.4 Assiz - Routage WS 2016 et NAT</td>
+                        <td class="col-period">06/05/25 au 27/05/25</td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-project">3.1 Navajo - DNS et DHCP, LAN-WAN</td>
+                        <td class="col-period">17/10/25 au 14/11/25</td>
+                        <td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-project">3.2 GPoPu - AD, GPO et sauvegarde</td>
+                        <td class="col-period">05/09/25 au 10/10/25</td>
+                        <td class="checked"></td><td></td><td></td><td></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-project">4.1 DMZ - Passerelle dorsale</td>
+                        <td class="col-period">21/11/25 au 19/12/25</td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-project">4.3 - Création de mon portfolio</td>
+                        <td class="col-period">09/03/26 au 13/03/26</td>
+                        <td></td><td></td><td></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td></td><td class="checked"></td><td class="checked"></td>
+                    </tr>
+                    <tr class="row-section"><td colspan="25">Réalisations en milieu pro. (1ère année)</td></tr>
+                    <tr>
+                        <td class="col-project">Installation Veeam et sauvegardes</td>
+                        <td class="col-period">03/06/25 au 28/06/25</td>
+                        <td></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr class="row-section"><td colspan="25">Réalisations en milieu pro. (2ème année)</td></tr>
+                    <tr>
+                        <td class="col-project">Service client</td>
+                        <td class="col-period">19/01/26 au 23/01/26</td>
+                        <td></td><td class="checked"></td><td></td><td></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="col-project">Installation de SLS Logpoint</td>
+                        <td class="col-period">19/01/26 au 13/03/26</td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="checked"></td><td class="checked"></td><td></td><td class="checked"></td><td></td><td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="grid-3" style="margin-bottom: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
-                <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Session 2026</h3>
-                <p style="font-size: 0.85rem; color: var(--muted);">Parcours SISR<br>Lycée Gustave Eiffel</p>
-            </div>
 
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
-                <div style="font-size: 2rem; margin-bottom: 1rem;">📁</div>
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Réalisations</h3>
-                <p style="font-size: 0.85rem; color: var(--muted);">7 AP en formation validées<br>2 Stages en entreprise</p>
-            </div>
-
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 2rem; border: 1px solid var(--border); border-radius: 15px;">
-                <div style="font-size: 2rem; margin-bottom: 1rem;">✅</div>
-                <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Compétences</h3>
-                <p style="font-size: 0.85rem; color: var(--muted);">Blocs 1, 2, 3, 4, 5 et 6<br>Référentiel BTS SIO</p>
-            </div>
+        
+        <div class="legend">
+            <div><span class="box-blue"></span> Compétence validée par l'activité professionnelle</div>
         </div>
-
-        <div style="text-align: center; margin-top: 4rem;">
-            <a href="assets/Tableau-de-compétence.xlsx - Tableau de synthèse Épreuve E5.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="btn btn-primary" 
-                style="gap: 12px; padding: 1rem 2.5rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: bold;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                Consulter le Tableau de Synthèse (PDF)
+    </div>
+            <div class="pdf-action-container">
+            <a href="Tableau-de-compétence.xlsx - Tableau de synthèse Épreuve E5 (1).pdf" target="_blank" class="btn-pdf">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Ouvrir le Tableau Officiel (PDF)
             </a>
+        </div>
+<section id="contact">
+    <div class="reveal">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h2 class="footer-name">Nathan <span>Barbirato</span></h2>
+                <p class="footer-bio">Étudiant en BTS SIO SISR au Lycée Gustave Eiffel. Passionné par la cybersécurité et l'administration systèmes.</p>
+                <div class="social-wrapper">
+                    <ul class="example-2">
+                        <li class="icon-content">
+                            <a href="https://www.linkedin.com/in/nathan-barbirato-0325b0345/" target="_blank" data-social="linkedin" aria-label="LinkedIn"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
+                            <div class="tooltip">LinkedIn</div>
+                        </li>
+                        <li class="icon-content">
+                            <a href="https://github.com/nbarbirato" target="_blank" data-social="github" aria-label="GitHub"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg></a>
+                            <div class="tooltip">GitHub</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#accueil">Accueil</a></li>
+                    <li><a href="stages.html">Stage</a></li>
+                    <li><a href="realisations.html">Réalisations</a></li>
+                    <li><a href="tableau.html">Tableau de Synthèse</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li>📧 nathanbarbirato@gmail.com</li>
+                    <li>📞 07 61 52 39 00</li>
+                    <li>📍 Izon, 33450</li>
+                </ul>
+                <a href="mailto:nathanbarbirato@gmail.com" class="btn btn-primary" style="margin-top: 1rem; width: fit-content;">Envoyer un message</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nathan Barbirato &bull; Tous droits réservés
         </div>
     </div>
 </section>
-    <div class="divider"></div>
+</main>
 
-    <div class="pagination-container reveal">
-        <a href="index.html" class="btn btn-pagination" style="text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; display: flex; align-items: center; gap: 10px; color: var(--text);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Précédent : Accueil
-        </a>
-        
-        <a href="realisations.html" class="btn btn-pagination" style="text-decoration: none; padding: 10px 20px; border: 1px solid var(--border); border-radius: 50px; display: flex; align-items: center; gap: 10px; color: var(--text);">
-            Suivant : Réalisations
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-    </div>
-
-
-<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 30px; right: 30px; cursor: pointer; opacity: 0; transition: 0.3s;">
+<div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
 </div>
 
 <script>
-    window.addEventListener('scroll', function() {
-        const nav = document.getElementById('mainNav');
-        const btt = document.getElementById('backToTop');
-        nav.classList.toggle('scrolled', window.scrollY > 100);
-        btt.style.opacity = window.scrollY > 400 ? "1" : "0";
-    });
-
-    // SCRIPT REVEAL : Active l'affichage au défilement
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
 
+    const mainNav = document.getElementById('mainNav');
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 150) mainNav.classList.add('scrolled'); else mainNav.classList.remove('scrolled');
+        if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show');
+    });
+</script>
 </body>
 </html>

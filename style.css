@@ -12,7 +12,7 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.7; font-weight: 300; overflow-x: hidden; }
 
 /* ==========================================================================
-   2. SPLASH SCREEN ET ANIMATIONS D'ENTRÉE
+   2. SPLASH SCREEN
    ========================================================================== */
 #splash { position: fixed; inset: 0; z-index: 9999; background: var(--dark); display: flex; align-items: center; justify-content: center; transition: clip-path 1.2s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease; clip-path: inset(0 0 0 0); }
 #splash.hide { clip-path: inset(50% 0 50% 0); opacity: 0; pointer-events: none; }
@@ -31,72 +31,30 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font-body); f
 /* ==========================================================================
    3. NAVIGATION ET MENUS (STANDARD)
    ========================================================================== */
-nav { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    z-index: 100; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    padding: 1.25rem 3rem; 
-    background: rgba(247,246,242,0.88); 
-    backdrop-filter: blur(12px); 
-    border-bottom: 1px solid var(--border); 
-    transition: opacity 0.8s ease; 
-    opacity: 1; 
-    pointer-events: auto; 
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(247,246,242,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: 0.4s; opacity: 1; pointer-events: auto; }
 ul { list-style: none !important; }
 .nav-logo { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--fg); }
 .nav-links { display: flex; gap: 2.5rem; align-items: center; }
 .nav-links > li { position: relative; }
-.nav-links a { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
+.nav-links a { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: 0.3s; position: relative; padding: 0.5rem 0; }
 .nav-links a:hover { color: var(--dark); }
-.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; background: var(--accent); transition: all 0.3s ease; transform: translateX(-50%); }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--accent); transition: 0.3s; transform: translateX(-50%); }
 .nav-links a:hover::after { width: 100%; }
 
 .sub-menu { position: absolute; top: 110%; left: 50%; transform: translateX(-50%); background: #ffffff; border: 1px solid var(--border); min-width: 240px; padding: 0.8rem; border-radius: 20px; display: none; flex-direction: column; gap: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-.sub-menu a { display: block; padding: 0.8rem 1.2rem; font-size: 0.7rem; text-transform: uppercase; color: var(--muted); text-decoration: none; background: #fdfdfb; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; font-weight: 400; }
+.sub-menu a { display: block; padding: 0.8rem 1.2rem; font-size: 0.7rem; text-transform: uppercase; color: var(--muted); text-decoration: none; background: #fdfdfb; border-radius: 12px; transition: 0.3s; }
 .sub-menu a:hover { color: var(--dark) !important; background: var(--accent); padding-left: 1.8rem; transform: translateX(5px); }
 .nav-links > li:hover .sub-menu { display: flex; }
 
 /* ==========================================================================
    4. NAVIGATION (SCROLLED / LATÉRALE)
    ========================================================================== */
-nav.scrolled { 
-    top: 50%; 
-    left: 2rem; 
-    right: auto; 
-    transform: translateY(-50%); 
-    flex-direction: column; 
-    padding: 2rem 1.5rem; 
-    border: 1px solid var(--border); 
-    border-radius: 30px; 
-    background: var(--card); 
-    box-shadow: 0 15px 45px rgba(0,0,0,0.08); 
-    width: 260px; 
-    align-items: flex-start; 
-    backdrop-filter: blur(10px); 
-}
-
+nav.scrolled { top: 50%; left: 2rem; right: auto; transform: translateY(-50%); flex-direction: column; padding: 2rem 1.5rem; border: 1px solid var(--border); border-radius: 30px; background: var(--card); box-shadow: 0 15px 45px rgba(0,0,0,0.08); width: 260px; align-items: flex-start; backdrop-filter: blur(10px); }
 nav.scrolled .nav-logo { display: none; }
 nav.scrolled .nav-links { flex-direction: column; gap: 0.8rem; align-items: flex-start; width: 100%; }
 nav.scrolled .nav-links a { font-size: 0.7rem; white-space: nowrap; }
 nav.scrolled .nav-links a::after { display: none; }
-
-nav.scrolled .sub-menu { 
-    position: static; 
-    transform: none; 
-    display: flex; 
-    flex-direction: column; 
-    border: none; 
-    box-shadow: none; 
-    padding: 0 0 0 1rem; 
-    margin-top: 0.2rem; 
-    background: transparent; 
-}
+nav.scrolled .sub-menu { position: static; transform: none; display: flex; flex-direction: column; border: none; box-shadow: none; padding: 0 0 0 1rem; margin-top: 0.2rem; background: transparent; }
 
 /* ==========================================================================
    5. STRUCTURE, SECTIONS ET BOUTONS
@@ -104,505 +62,892 @@ nav.scrolled .sub-menu {
 section { padding: 8rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 h1 { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800; line-height: 1.05; }
 h1 span { color: var(--accent); }
-.divider { width: 100%; height: 1px; background: var(--border); }
-
+.divider { width: 100%; height: 1px; background: var(--border); margin: 2rem 0; }
 .btn { display: inline-flex; align-items: center; padding: 0.75rem 1.6rem; border-radius: 8px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: 0.2s; }
 .btn-primary { background: var(--dark); color: var(--light-text); }
 .btn-primary:hover { background: var(--accent); color: var(--dark); }
 .btn-ghost { color: var(--fg); border: 1px solid var(--border); }
-.btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; color: var(--dark); border: 1px solid var(--border); background: var(--card); transition: 0.3s; margin-bottom: 2rem; }
-.btn-back:hover { background: var(--accent); color: var(--dark); border-color: var(--accent); transform: translateX(-5px); }
 
 #accueil { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-.hero-tag { display: inline-block; font-size: 1.1rem; font-weight: 400; color: var(--dark); background: rgba(154, 200, 235, 0.2); padding: 0.6rem 1.4rem; border-radius: 999px; margin-bottom: 2rem; letter-spacing: 0.02em; }
+.hero-tag { display: inline-block; font-size: 1.1rem; color: var(--dark); background: rgba(154, 200, 235, 0.2); padding: 0.6rem 1.4rem; border-radius: 999px; margin-bottom: 2rem; }
 .hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-.hero-scroll { margin-top: 5rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
-.hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: var(--muted); }
+.hero-scroll { margin-top: 5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
+.hero-scroll::before { content: ''; width: 32px; height: 1px; background: var(--muted); }
 
 /* ==========================================================================
    6. GRILLES ET CARTES (FORMATION & CERTIFS)
    ========================================================================== */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-.grid-program { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
-@media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
-
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: 0.3s; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; } /* GAP augmenté */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; } /* GAP augmenté */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: 0.3s; margin-bottom: 1rem; }
 .card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,0,0,0.05); }
 .card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 1rem; color: var(--dark); }
 
-.tag-bac, .tag-sio { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(154, 200, 235, 0.2); color: var(--dark); border-radius: 999px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1rem; }
 .formation-img-box { flex: 1; min-width: 300px; height: 300px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); transition: 0.3s; }
-.formation-img-box a { display: block; width: 100%; height: 100%; }
 .formation-img-box img { width: 100%; height: 100%; object-fit: contain; background: white; transition: 0.5s ease; }
 .formation-img-box:hover img { transform: scale(1.05); }
 
-.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
 .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; transition: 0.4s; display: flex; flex-direction: column; }
-.cert-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 .cert-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-.cert-date { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em; }
-.cert-org { font-size: 0.9rem; font-weight: 600; color: var(--muted); margin-bottom: 1.5rem; display: block; }
-.cert-details { border-top: 1px solid var(--border); padding-top: 1.5rem; flex-grow: 1; }
 .cert-details li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-size: 0.85rem; }
 .cert-details li span:last-child { font-weight: 700; color: var(--dark); background: rgba(154, 200, 235, 0.15); padding: 2px 8px; border-radius: 4px; }
-.btn-pdf { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 2rem; padding: 0.8rem 1.5rem; background: var(--dark); color: white; border-radius: 10px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-.btn-pdf:hover { background: var(--accent); color: var(--dark); transform: translateY(-3px); }
-.btn-mini { display: inline-flex; align-items: center; justify-content: center; padding: 0.15rem 0.5rem; margin-left: 0.6rem; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: var(--dark); background: var(--accent); border-radius: 4px; transition: 0.3s; vertical-align: middle; border: 1px solid transparent; }
-.btn-mini:hover { transform: translateX(2px); filter: brightness(1.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+.btn-mini { display: inline-flex; align-items: center; justify-content: center; padding: 0.15rem 0.5rem; margin-left: 0.6rem; font-size: 0.6rem; font-weight: 700; color: var(--dark); background: var(--accent); border-radius: 4px; transition: 0.3s; vertical-align: middle; }
 
 /* ==========================================================================
    7. COMPÉTENCES (SKILLS BOX & TABS)
    ========================================================================== */
 .header-box { text-align: left; margin-bottom: 5rem; animation: fadeIn 0.8s ease; }
-.subtitle { color: var(--muted); font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 1rem; }
-.grid-competences { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
-.card-nav { background: var(--card); border: 1px solid var(--border); padding: 2.5rem 1.5rem; border-radius: 24px; text-align: center; transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; overflow: hidden; }
-.card-icon { font-size: 2.2rem; margin-bottom: 1.2rem; transition: transform 0.3s ease; }
-.card-nav h3 { font-size: 0.75rem !important; margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
-
+.grid-competences { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+.card-nav { background: var(--card); border: 1px solid var(--border); padding: 2.5rem 1.5rem; border-radius: 24px; text-align: center; transition: 0.5s; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+.card-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
 .card-link.active .card-nav { border-color: var(--accent); background: #ffffff; box-shadow: 0 25px 50px -12px rgba(154, 200, 235, 0.25); transform: translateY(-12px); }
-.card-link.active .card-icon { transform: scale(1.2); }
-.card-link.active h3 { color: var(--dark); }
-
-.competences-display { background: #ffffff; padding: 5rem 3rem; border-radius: 40px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.02); min-height: 450px; position: relative; }
-.content-header { margin-bottom: 4rem; text-align: left; }
-.divider-small { width: 150px; height: 2px; background: var(--accent); margin: 1.5rem 0 !important; border-radius: 10px; }
-
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 3rem; justify-items: center; }
-.skill-card { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; transition: all 0.3s ease; padding: 1rem; border-radius: 20px; width: 100%; height: 280px; justify-content: center; }
-.skill-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,0,0,0.05); }
-.skill-card img { width: 70px; height: 70px; object-fit: contain; transition: all 0.4s ease; }
+.competences-display { background: #ffffff; padding: 5rem 3rem; border-radius: 40px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.02); min-height: 450px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 4rem; justify-items: center; } /* GAP augmenté */
+.skill-card { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; padding: 1rem; width: 100%; height: 280px; justify-content: center; }
+.skill-card img { width: 70px; height: 70px; object-fit: contain; transition: 0.4s; }
 .skill-card img.huge-icon { width: 130px; height: 130px; }
-.skill-card:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
-.skill-card span { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; color: var(--muted); text-align: center; transition: color 0.3s; }
-.skill-card:hover span { color: var(--dark); }
-
 .tab-content { display: none; }
-.tab-content.active { display: block; animation: tabReveal 0.7s cubic-bezier(0.2, 1, 0.3, 1); }
+.tab-content.active { display: block; animation: tabReveal 0.7s ease; }
 
 /* ==========================================================================
    8. CONTACT ET RÉSEAUX SOCIAUX
    ========================================================================== */
-.contact-main-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-.contact-left-stack { display: flex; flex-direction: column; gap: 1rem; }
-.contact-row { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2.5rem; margin-bottom: 0; }
-.contact-right-box { display: flex; flex-direction: column; justify-content: center; height: 100%; min-height: 100%; padding: 2.5rem; }
+.contact-main-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.contact-row { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2.5rem; margin-bottom: 1.5rem; }
 .contact-text { font-size: 1rem; color: var(--fg); }
-.contact-btn { margin: 0; white-space: nowrap; }
-
-.example-2 { display: flex; justify-content: flex-start; align-items: center; list-style: none; padding: 0; margin-top: 2rem; }
-.icon-content { margin: 0 10px; position: relative; }
+.example-2 { display: flex; justify-content: center; align-items: center; list-style: none; gap: 1rem; margin-top: 2rem; }
 .icon-content a { position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 50%; color: #4d4d4d; background-color: #fff; border: 1px solid var(--border); transition: 0.3s; }
-.icon-content a svg { width: 24px; height: 24px; z-index: 1; position: relative; }
-.filled { position: absolute; bottom: 0; left: 0; width: 100%; height: 0; transition: 0.3s; }
-.icon-content a:hover { color: white; }
+.filled { position: absolute; bottom: 0; left: 0; width: 100%; height: 0; transition: 0.3s; z-index: 0; }
 .icon-content a:hover .filled { height: 100%; }
+.icon-content a:hover { color: white; }
+.icon-content a svg { width: 24px; height: 24px; z-index: 1; position: relative; }
 .icon-content a[data-social="linkedin"] .filled { background-color: #0274b3; }
 .icon-content a[data-social="github"] .filled { background-color: #24262a; }
 .icon-content a[data-social="instagram"] .filled { background: linear-gradient(45deg, #405de6, #fd1f1f); }
-.tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); color: #fff; padding: 6px 10px; border-radius: 5px; opacity: 0; visibility: hidden; font-size: 14px; transition: opacity 0.3s ease; z-index: 10; }
+.tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); color: #fff; padding: 6px 10px; border-radius: 5px; opacity: 0; visibility: hidden; font-size: 14px; transition: 0.3s; }
 .icon-content:hover .tooltip { opacity: 1; visibility: visible; top: -50px; }
 
 /* ==========================================================================
-   9. EFFETS, SCROLL ET RESPONSIVE GÉNÉRAL
+   9. EFFETS, SCROLL ET PAGINATION
    ========================================================================== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(24px); transition: 0.6s ease; }
 .reveal.visible { opacity: 1; transform: none; }
-
 #backToTop { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--dark); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s; border: 1px solid var(--border); }
 #backToTop.show { opacity: 1; visibility: visible; }
-
-.veille-content { display: none; }
-.veille-content.active { display: block; animation: fadeIn 0.5s ease; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes tabReveal { from { opacity: 0; transform: translateY(20px); filter: blur(10px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
-
-@media (max-width: 992px) { .contact-main-wrapper { grid-template-columns: 1fr; } .contact-row { flex-direction: column; align-items: flex-start; gap: 1rem; } .contact-right-box { min-height: auto; } }
-@media (max-width: 768px) { .competences-display { padding: 3rem 1.5rem; } .grid-competences { grid-template-columns: repeat(2, 1fr); } }
-
-@media (max-width: 768px) {
-    .grid-2, .grid-3, .cert-grid, .contact-main-wrapper {
-        grid-template-columns: 1fr !important;
-    }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.6rem; }
-    .hero-scroll { display: none; }
-}
-
-@media (max-width: 480px) {
-    .header-box { margin-bottom: 2rem; }
-    .card { padding: 1.5rem; }
-    .hero-cta { flex-direction: column; width: 100%; }
-    .hero-cta .btn { width: 100%; justify-content: center; }
-}
+.pagination-container { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 6rem; padding-bottom: 6rem; }
+.btn-pagination { display: flex; align-items: center; gap: 12px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 50px; text-decoration: none; font-weight: 600; font-family: 'Syne', sans-serif; transition: 0.3s; }
+.btn-pagination:hover { background: var(--accent); color: var(--dark); }
 
 /* ==========================================================================
-   10. CORRECTIF MENU MOBILE (1350px)
-   ========================================================================== */
-@media (max-width: 1350px) {
-    nav.scrolled {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        transform: none !important;
-        flex-direction: row !important;
-        width: 100% !important;
-        height: auto !important;
-        padding: 0.8rem 1.5rem !important;
-        border-radius: 0 !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
-    }
-
-    nav.scrolled .nav-logo {
-        display: block !important;
-    }
-
-    nav.scrolled .nav-links {
-        flex-direction: row !important;
-        gap: 1rem !important;
-    }
-
-    nav.scrolled .sub-menu {
-        display: none !important;
-    }
-
-    .nav-links a {
-        font-size: 0.7rem !important;
-    }
-
-    main, section, .container {
-        margin-left: 0 !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-}
-
-@media (max-width: 768px) {
-    section { padding: 5rem 1rem 3rem !important; }
-}
-
-@media (max-width: 480px) {
-    .grid-program, .cert-grid { 
-        grid-template-columns: 1fr !important; 
-    }
-    .skills-grid { 
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important; 
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 600px) {
-    nav, nav.scrolled { 
-        flex-direction: column !important; 
-        padding: 1rem !important;
-    }
-    .nav-links { 
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem !important;
-        margin-top: 10px;
-    }
-}
-
-/* ==========================================================================
-   11. FONCTIONS SPÉCIFIQUES (LIVRABLES & DOCK)
-   ========================================================================== */
-.scroll-list {
-    max-height: 250px; 
-    overflow-y: auto;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.scroll-list::-webkit-scrollbar { width: 6px; }
-.scroll-list::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
-.scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; transition: 0.3s; }
-.scroll-list::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-.scroll-list .btn { width: 100%; justify-content: space-between; margin: 0; }
-.scroll-list .btn-mini { width: auto !important; min-width: 45px; padding: 2px 8px !important; flex-shrink: 0; margin-left: 15px; font-size: 0.65rem; }
-.scroll-list .btn span:first-child { text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-/* ==========================================================================
-   12. CORRECTIFS RESPONSIVE UNIFIÉS
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* 1. Structure de la barre : Logo à gauche, Liens à droite */
-    nav, nav.scrolled {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        height: 60px !important;
-        padding: 0 15px !important;
-        width: 100% !important;
-    }
-
-    .nav-logo {
-        flex-shrink: 0 !important;
-        margin-right: 15px !important;
-        font-size: 0.65rem !important;
-    }
-
-    /* 2. Zone coulissante : On force l'alignement au début pour voir Accueil */
-    .nav-links {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important; /* Aligne les liens au début du scroll */
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-        flex: 1 !important;
-        gap: 20px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* Suppression des marges sur le premier élément pour qu'il soit bien au bord */
-    .nav-links li:first-child {
-        margin-left: 0 !important;
-        padding-left: 0 !important;
-    }
-
-    .nav-links li {
-        flex-shrink: 0 !important;
-    }
-
-    .nav-links a {
-        font-size: 0.7rem !important;
-        white-space: nowrap !important;
-        padding: 5px 0 !important;
-    }
-
-    /* 3. On cache les sous-menus et on nettoie la barre de scroll */
-    .nav-links::-webkit-scrollbar { display: none; }
-    .sub-menu, nav.scrolled .sub-menu { display: none !important; }
-
-    
-
-
-
-/* --- SECTION LIVRABLES MOBILE --- */
-
-/* 1. Verrouillage de la carte pour éviter le scroll horizontal */
-.card {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 1.5rem 1rem !important;
-    box-sizing: border-box !important;
-}
-
-/* 2. Le bouton (conteneur) */
-.scroll-list .btn {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important; /* CENTRE VERTICALEMENT LE TEXTE ET LE BADGE */
-    width: 100% !important;
-    min-height: 60px !important;
-    padding: 10px 15px !important;
-    white-space: normal !important; /* Autorise le texte sur 2 lignes */
-}
-
-/* 3. Le texte à gauche */
-.scroll-list .btn span:first-child {
-    flex: 1 !important;
-    text-align: left !important;
-    font-size: 0.8rem !important;
-    line-height: 1.3 !important;
-    padding-right: 15px !important;
-}
-
-/* 4. Le badge PDF à droite (Fixé pour ne plus s'étirer) */
-.scroll-list .btn-mini {
-    flex: 0 0 auto !important; /* Empêche de grandir ou rétrécir */
-    width: 46px !important;
-    height: 32px !important; /* Hauteur fixe pour éviter l'effet étiré */
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 6px !important;
-    font-size: 0.65rem !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* --- FIX FINAL : BADGE PDF PROPRE ET PETIT --- */
-@media (max-width: 768px) {
-    /* 1. On empêche l'étirement des éléments dans la boîte */
-    .scroll-list .btn, .btn {
-        display: flex !important;
-        align-items: center !important; /* Centre le badge verticalement SANS l'étirer */
-        justify-content: space-between !important;
-        min-height: 60px !important; /* Garde une belle hauteur de case */
-        padding: 10px 15px !important;
-    }
-
-    /* 2. On verrouille la taille du badge PDF */
-    .btn-mini {
-        height: 30px !important; /* Hauteur courte de badge */
-        width: 45px !important;  /* Largeur fixe */
-        flex: none !important;   /* Bloque toute déformation */
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 6px !important;
-        font-size: 0.65rem !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 3. On ajuste le texte pour qu'il respire */
-    .scroll-list .btn span:first-child {
-        flex: 1 !important;
-        font-size: 0.8rem !important;
-        padding-right: 12px !important;
-        white-space: normal !important; /* Autorise le texte sur 2 lignes si besoin */
-    }
-}
-
-}
-
-.splash-name { font-size: clamp(1rem, 6.2vw, 8rem) !important; white-space: nowrap !important; letter-spacing: -0.05em !important; }
-
-@media (max-width: 480px) {
-    .splash-sub { font-size: 0.55rem !important; letter-spacing: 0.1em !important; }
-    .splash-btn { padding: 0.7rem 1.8rem !important; font-size: 0.65rem !important; }
-}
-
-/* ==========================================================================
-   13. PAGINATION ET GRILLE RESPONSIVE
-   ========================================================================== */
-.pagination-container { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 5rem; padding-bottom: 5rem; }
-.btn-pagination { display: flex; align-items: center; gap: 12px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 50px; color: var(--text); text-decoration: none; font-weight: 600; font-family: 'Syne', sans-serif; transition: all 0.3s ease; font-size: 0.9rem; }
-.btn-pagination:hover { background: var(--accent); color: var(--dark); border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-.btn-pagination svg { transition: transform 0.3s ease; }
-.btn-pagination:hover svg { transform: translateX(5px); }
-.btn-pagination:first-child:hover svg { transform: translateX(-5px); }
-
-@media (max-width: 600px) {
-    .pagination-container { flex-direction: column; gap: 15px; }
-    .btn-pagination { width: 100%; justify-content: center; }
-}
-
-.grid-responsive { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; width: 100%; }
-
-@media (max-width: 480px) {
-    .grid-responsive { grid-template-columns: 1fr; gap: 1.5rem; }
-    .card { padding: 1.5rem !important; }
-    #stages { padding-top: 100px !important; }
-}
-
-/* ==========================================================================
-   14. AP DOCK ET RELAIS
+   10. AP DOCK (LES CERCLES À DROITE)
    ========================================================================== */
 .ap-dock { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; padding: 15px 8px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); border-radius: 100px; border: 1px solid var(--border); box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
 .ap-item { position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; }
-.ap-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--card); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.65rem; font-weight: 800; color: var(--muted); transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1); }
-.ap-tooltip { position: absolute; right: 50px; background: var(--dark); color: white; padding: 6px 14px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: 0.3s cubic-bezier(0.2, 1, 0.3, 1); pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.ap-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--card); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.65rem; font-weight: 800; color: var(--muted); transition: 0.4s; }
+.ap-tooltip { position: absolute; right: 50px; background: var(--dark); color: white; padding: 6px 14px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: 0.3s; pointer-events: none; }
 .ap-item:hover .ap-circle { border-color: var(--accent); color: var(--dark); transform: scale(1.15); background: #fff; }
 .ap-item:hover .ap-tooltip { opacity: 1; transform: translateX(0); }
-.ap-item.active .ap-circle { background: var(--accent); border-color: var(--accent); color: var(--dark); box-shadow: 0 0 20px rgba(154, 200, 235, 0.5); animation: ap-pulse 2s infinite; }
-.ap-item.active .ap-tooltip { opacity: 1; transform: translateX(0); background: var(--accent); color: var(--dark); }
-
-@keyframes ap-pulse { 0% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(154, 200, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(154, 200, 235, 0); } }
+.ap-item.active .ap-circle { background: var(--accent); border-color: var(--accent); color: var(--dark); box-shadow: 0 0 20px rgba(154, 200, 235, 0.5); }
 
 @media (max-width: 1100px) { .ap-dock { display: none; } }
 
-.ap-separator { width: 20px; height: 1px; background: var(--border); margin: 4px auto; }
-.home-circle { background: var(--dark) !important; color: var(--accent) !important; border-color: var(--dark) !important; }
-.ap-item:hover .home-circle { background: var(--accent) !important; color: var(--dark) !important; border-color: var(--accent) !important; }
-
-@media (min-width: 1101px) {
-    main {
-        /* On garde l'espace pour le menu à gauche */
-        padding-left: 280px; 
-        width: 100%;
-    }
-
-    section {
-        margin: 0 auto !important;
-        /* ON AUGMENTE ICI : de 1200px à 1450px */
-        max-width: 1450px !important; 
-        /* On réduit un peu le padding latéral pour gagner encore de la place */
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-    }
-}
-
 /* ==========================================================================
-   15. CORRECTIF FINAL : SOUS-MENU VERTICAL UNIFORME
+   11. FONCTIONS SPÉCIFIQUES (LIVRABLES)
    ========================================================================== */
-nav.scrolled .sub-menu { 
-    position: static; transform: none; display: flex; flex-direction: column; border: none; box-shadow: none; padding: 0; margin-top: 0.5rem; background: transparent; width: 100%;
-}
-
-nav.scrolled .sub-menu a { 
-    display: block !important; width: 100% !important; padding: 0.8rem 1rem 0.8rem 1.5rem !important; border-radius: 12px; box-sizing: border-box; background: #fdfdfb; margin-bottom: 4px; transition: all 0.3s ease;
-}
-
-nav.scrolled .sub-menu a:hover { background: var(--accent) !important; color: var(--dark) !important; padding-left: 2rem !important; }
-
-/* FIX RADICAL SOUS-MENU */
-nav.scrolled .sub-menu { display: flex !important; flex-direction: column !important; width: 100% !important; padding: 0 !important; margin: 0.5rem 0 0 0 !important; position: static !important; background: transparent !important; border: none !important; box-shadow: none !important; }
-nav.scrolled .sub-menu a { display: block !important; width: 100% !important; padding: 0.8rem 1rem 0.8rem 2.5rem !important; margin: 2px 0 !important; background: #fdfdfb !important; border-radius: 12px !important; box-sizing: border-box !important; text-align: left !important; transition: all 0.3s ease !important; }
-nav.scrolled .sub-menu a:hover { background: var(--accent) !important; color: var(--dark) !important; padding-left: 3rem !important; }
-
-/* RESET TOTAL DU SOUS-MENU (FORCE SIDEBAR ONLY) */
-nav.scrolled .sub-menu { position: static !important; display: flex !important; flex-direction: column !important; transform: none !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; padding: 0 !important; margin: 0.5rem 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; visibility: visible !important; opacity: 1 !important; }
-nav.scrolled .sub-menu li { width: 100% !important; margin: 0 !important; padding: 0 !important; }
-nav.scrolled .sub-menu a { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 10px 15px 10px 25px !important; margin: 2px 0 !important; background: #fdfdfb !important; border-radius: 10px !important; font-size: 0.65rem !important; white-space: normal !important; text-align: left !important; color: var(--muted) !important; }
-nav.scrolled .sub-menu a:hover, nav.scrolled .sub-menu a.active { background: var(--accent) !important; color: var(--dark) !important; transform: none !important; }
-
+.scroll-list { max-height: 250px; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 12px; }
+.scroll-list::-webkit-scrollbar { width: 6px; }
+.scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-list .btn { width: 100%; justify-content: space-between; margin: 0; }
 
 /* ==========================================================================
-   DERNIÈRE SECTION : MOBILE (DOIT RESTER ICI POUR TOUT ÉCRASER)
+   12. MASTER FIX MOBILE (NE RIEN SUPPRIMER ICI)
    ========================================================================== */
 @media (max-width: 768px) {
-    /* On cache les sous-menus quoi qu'il arrive sur mobile */
-    .sub-menu, 
-    nav.scrolled .sub-menu,
-    .nav-links li:hover .sub-menu { 
-        display: none !important; 
-        visibility: hidden !important;
-        opacity: 0 !important;
-    }
-
-    /* On force la barre horizontale propre */
+    /* 1. Menu Mobile : Coulissant + Accueil accessible */
     nav, nav.scrolled { 
-        position: fixed !important; 
-        top: 0 !important; 
-        left: 0 !important; 
-        right: 0 !important;
-        width: 100% !important; 
-        height: 60px !important; 
-        padding: 0 15px !important; 
-        background: #fff !important;
-        flex-direction: row !important; 
-        transform: none !important; 
-        align-items: center !important;
-        justify-content: space-between !important;
+        position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; 
+        transform: none !important; flex-direction: row !important; height: 60px !important; 
+        width: 100% !important; padding: 0 15px !important; justify-content: space-between !important; 
+        align-items: center !important; background: #fff !important; 
     }
-
+    .nav-logo { flex-shrink: 0 !important; font-size: 0.65rem !important; margin-right: 15px !important; display: block !important; }
     .nav-links { 
-        display: flex !important; 
-        flex-direction: row !important; 
-        overflow-x: auto !important; 
-        white-space: nowrap !important; 
-        gap: 1.2rem !important;
-        height: 100% !important;
-        align-items: center !important;
+        display: flex !important; flex-direction: row !important; overflow-x: auto !important; 
+        -webkit-overflow-scrolling: touch; gap: 20px !important; flex: 1 !important; 
+        justify-content: flex-start !important; margin: 0 !important; 
     }
+    .nav-links li { flex-shrink: 0 !important; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .sub-menu { display: none !important; visibility: hidden !important; }
 
-    /* On s'assure que le contenu ne remonte pas sous la barre */
-    body { padding-top: 80px !important; }
-    h1 { font-size: 2rem !important; }
+    /* 2. Fix Badges PDF (Petit format centré) */
+    .btn-mini { height: 28px !important; width: 44px !important; flex: none !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; align-self: center !important; margin: 0 !important; padding: 0 !important; }
+    .scroll-list .btn { display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 60px !important; width: 100% !important; padding: 10px 15px !important; }
+    .scroll-list .btn span:first-child { flex: 1 !important; font-size: 0.8rem !important; white-space: normal !important; padding-right: 10px !important; }
+
+    /* 3. Spacing Mobile */
+    .grid-2, .grid-3 { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .card { padding: 1.5rem !important; margin-bottom: 2rem !important; }
+    section { padding: 6rem 1.5rem 3rem !important; }
+    body { padding-top: 70px !important; }
+}
+
+/* 13. SIDEBAR FIX PC LARGE */
+@media (min-width: 1101px) {
+    main { padding-left: 280px; width: 100%; }
+    section { max-width: 1450px !important; }
+}
+
+/* --- INTEGRATION PROPRE DU SOUS-MENU DANS LA SIDEBAR --- */
+nav.scrolled .sub-menu {
+    position: static !important; /* On l'intègre dans le flux de la colonne */
+    transform: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 5px 0 5px 15px !important; /* Indentation pour l'effet de hiérarchie */
+    background: transparent !important; /* On enlève le fond blanc qui dépasse */
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+nav.scrolled .sub-menu li {
+    width: 100% !important;
+}
+
+nav.scrolled .sub-menu a {
+    background: rgba(0,0,0,0.03) !important; /* Fond très léger pour distinguer */
+    margin: 2px 0 !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    font-size: 0.6rem !important; /* Légèrement plus petit que le menu principal */
+    white-space: normal !important; /* Autorise le texte sur 2 lignes si trop long */
+    display: block !important;
+    box-shadow: none !important;
+}
+
+nav.scrolled .sub-menu a:hover {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* --- SECTION CERTIFICATIONS AMÉLIORÉE --- */
+
+/* La Grille */
+#certifications .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem; /* Espace généreux entre les cartes */
+    margin-bottom: 3rem;
+}
+
+/* La Carte Style "Certificat" */
+.cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* Ligne du haut (Émetteur + Badge) */
+.cert-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Badge de l'émetteur (ANSSI, Microsoft...) */
+.cert-card .tag-sio {
+    margin-bottom: 0;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    background: rgba(56, 68, 84, 0.05);
+    color: var(--dark);
+    padding: 5px 12px;
+}
+
+/* Badge d'état (Validé, 92%...) */
+.cert-status {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--accent); /* Couleur par défaut */
+    color: var(--dark);
+    box-shadow: 0 4px 10px rgba(154, 200, 235, 0.3);
+}
+
+/* Titre et texte */
+.cert-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    color: var(--dark);
+}
+
+.cert-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* Bouton du bas */
+.cert-footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Animation subtile sur l'icône SVG du bouton */
+.cert-footer .btn svg {
+    transition: transform 0.3s ease;
+}
+
+.cert-footer .btn:hover svg {
+    transform: translate(3px, -3px);
+}
+
+.cert-status.success { background: #E3F2FD; color: #1976D2; } /* Bleu clair */
+.cert-status.valid { background: #E8F5E9; color: #2E7D32; }   /* Vert discret */
+
+/* --- OPTIMISATION DES COMPÉTENCES (ICÔNES PLUS PETITES) --- */
+
+.competences-display {
+    background: #ffffff;
+    padding: 3rem 2.5rem; /* Réduit un peu le padding interne */
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    min-height: auto; /* Laisse le contenu définir la hauteur */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Plus de colonnes par ligne */
+    gap: 2rem; /* Espace équilibré */
+    justify-items: center;
+    margin-top: 2rem;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 16px;
+    background: #fdfdfb;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 150px; /* HAUTEUR RÉDUITE (était à 280px) */
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    background: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* TAILLE DES ICÔNES RÉDUITE */
+.skill-card img {
+    width: 45px; /* Taille standard plus petite */
+    height: 45px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: grayscale(20%); /* Un peu plus sobre */
+}
+
+/* Gestion des icônes larges (comme Windows Server) */
+.skill-card img.huge-icon {
+    width: 65px; /* Réduit de 130px à 65px */
+    height: 65px;
+}
+
+.skill-card:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.skill-card span {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* --- NOUVEAU DESIGN CONTACT / FOOTER --- */
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: 4rem;
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-col h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-name {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.footer-bio {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+/* Listes Footer */
+.footer-links, .contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .contact-list li {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.contact-list a {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Copyright */
+.footer-bottom {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.75rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .footer-bio { margin: 0 auto; }
+    .example-2 { justify-content: center; }
+    .contact-list li { justify-content: center; }
+}
+
+/* --- BOUTON PAGINATION PREMIUM CENTRÉ --- */
+.pagination-container {
+    display: flex;
+    justify-content: center; /* CENTRE LE BOUTON PARFAITEMENT */
+    align-items: center;
+    width: 100%;
+    margin: 5rem 0;
+}
+
+.btn-pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    padding: 12px 35px;
+    background: var(--card);
+    border: 2px solid var(--border); /* Bordure plus épaisse pour le côté pro */
+    border-radius: 100px; /* Forme pilule premium */
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.pagin-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.pagin-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.pagin-circle {
+    width: 35px;
+    height: 35px;
+    background: var(--accent);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+/* --- EFFETS AU SURVOL --- */
+.btn-pagination:hover {
+    border-color: var(--accent);
+    transform: scale(1.05); /* Effet de zoom léger */
+    box-shadow: 0 10px 30px rgba(154, 200, 235, 0.25);
+}
+
+.btn-pagination:hover .pagin-circle {
+    transform: translateX(5px); /* La flèche bouge toute seule */
+    background: var(--dark);
+    color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .btn-pagination {
+        padding: 10px 20px;
+        gap: 10px;
+    }
+    .pagin-title { font-size: 0.9rem; }
+}
+
+/* --- ANIMATION D'APPARITION DU MENU VERTICAL --- */
+nav.scrolled {
+    /* On s'assure qu'il part de la gauche pour glisser vers sa place */
+    animation: sidebarSlideIn 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    z-index: 999;
+}
+
+@keyframes sidebarSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-100px, -50%); /* Part de la gauche */
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, -50%); /* Arrive à sa position (left: 2rem) */
+    }
+}
+
+/* On cache proprement le logo et les bordures du menu horizontal pour éviter les flashs */
+nav.scrolled .nav-logo {
+    display: none !important;
+}
+
+/* Optionnel : Si le menu clignote au scroll, ajoute ceci */
+nav {
+    will-change: transform, opacity;
+}
+
+/* --- SUPPRESSION DU VIDE DANS COMPÉTENCES --- */
+
+.competences-display {
+    min-height: auto !important;    /* Supprime la hauteur forcée de 450px */
+    padding: 3rem 2.5rem !important; /* Réduit le vide interne (en haut/bas) */
+}
+
+.skills-grid {
+    margin-bottom: 0 !important;   /* Enlève la marge sous les icônes */
+}
+
+.pagination-container {
+    margin-top: 1rem !important;   /* Rapproche le bouton "Suivant" de la boîte */
+    margin-bottom: 3rem !important; /* Réduit l'espace avant le footer */
+}
+
+/* --- AMÉLIORATION DES CARTES EXPÉRIENCES --- */
+
+/* On s'assure que la grille force la même hauteur */
+#about2 .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch; /* Force l'alignement vertical */
+}
+
+.exp-card {
+    border-left: 4px solid var(--accent) !important; /* Barre colorée sur le côté */
+    padding: 2.5rem !important;
+    height: 100%; /* Prend toute la hauteur disponible dans la grille */
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-header {
+    margin-bottom: 1.5rem;
+}
+
+.exp-header h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2;
+}
+
+.exp-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.exp-company {
+    color: var(--dark);
+}
+
+.exp-date {
+    color: var(--muted);
+    background: rgba(0,0,0,0.04);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.exp-card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: auto; /* Pousse le texte vers le haut mais garde l'équilibre */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .exp-card {
+        padding: 1.5rem !important;
+    }
+}
+
+/* --- AMÉLIORATION ACCUEIL & ABOUT --- */
+
+/* Hero Styles */
+.hero-content { max-width: 800px; }
+.hero-title { margin-bottom: 1.5rem; }
+.hero-desc { font-size: 1.15rem; color: var(--muted); max-width: 650px; margin-bottom: 2.5rem; }
+
+/* About Cards Uniformes */
+.about-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid var(--accent) !important;
+    padding: 2.5rem !important;
+}
+
+.card-header-accent h3 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+}
+
+/* Badges d'intérêt */
+.interests-wrapper { margin-top: 2rem; }
+.interest-title { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 10px; }
+.interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.i-tag { 
+    background: rgba(0,0,0,0.04); 
+    padding: 6px 14px; 
+    border-radius: 99px; 
+    font-size: 0.8rem; 
+    font-weight: 600;
+    border: 1px solid var(--border);
+}
+
+/* --- TIMELINE SCOLAIRE --- */
+.timeline { list-style: none; padding-left: 10px; border-left: 1px solid var(--border); margin-left: 10px; }
+.timeline-item { position: relative; padding-bottom: 25px; padding-left: 25px; }
+.timeline-item:last-child { padding-bottom: 0; }
+
+.t-dot { 
+    position: absolute; left: -6px; top: 5px; 
+    width: 11px; height: 11px; 
+    background: var(--border); border-radius: 50%; 
+    border: 2px solid var(--card);
+}
+.t-dot.active { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+.t-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.t-content strong { font-size: 0.95rem; color: var(--dark); }
+.t-content small { color: var(--muted); font-weight: 500; }
+
+/* Correction Bouton PDF Mini */
+.btn-mini { 
+    height: 24px !important; width: 42px !important; 
+    display: inline-flex !important; align-items: center; justify-content: center;
+    font-size: 0.6rem !important; background: var(--accent); color: var(--dark);
+    border-radius: 4px; text-decoration: none; font-weight: 800;
+}
+
+/* --- SECTION STAGES & BOX LIVRABLES --- */
+
+.grid-stages {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem; /* Espace généreux entre chaque stage */
+    margin-bottom: 5rem;
+}
+
+.stage-container {
+    gap: 4rem; /* Espace entre les deux colonnes du stage */
+    align-items: start;
+}
+
+/* Visuels du stage */
+.stage-visuals {
+    border-left: 4px solid var(--accent) !important;
+    padding: 2.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.stage-logo img {
+    margin-bottom: 2rem;
+}
+
+.stage-building img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Contenu du stage */
+.stage-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.stage-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.stage-meta p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.stage-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- BOX DES LIVRABLES (AMÉLIORÉE) --- */
+.deliverables-card {
+    border-left: 4px solid var(--accent) !important; /* Barre colorée Premium */
+    padding: 2.5rem !important;
+    margin-top: 2rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.deliverables-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.deliverables-header h3 {
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin: 0;
+}
+
+.deliverables-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    background: rgba(154, 200, 235, 0.1);
+    color: var(--dark);
+    padding: 5px 12px;
+    border-radius: 99px;
+}
+
+/* Liste déroulante des fichiers (comme dans image_8.png mais Premium) */
+.scroll-list {
+    max-height: 250px; 
+    overflow-y: auto;
+    padding-right: 15px; /* Espace pour la barre de défilement */
+}
+
+/* Styling de la barre de défilement */
+.scroll-list::-webkit-scrollbar { width: 6px; }
+.scroll-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-list::-webkit-scrollbar-track { background: var(--bg); border-radius: 10px; }
+
+.deliverable-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #fdfdfb;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.deliverable-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(154, 200, 235, 0.15);
+}
+
+.deliverable-file span {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+}
+
+.deliverable-file small {
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* Boutons PDF (Plus petits que l'original) */
+.btn-pdf {
+    padding: 8px 18px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 100px;
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-pdf:hover {
+    background: var(--accent);
+    color: var(--dark);
+    transform: scale(1.05);
+}
+
+.btn-pdf svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-pdf:hover svg {
+    transform: translate(2px, -2px);
+}
+
+.hero-title-styled {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+.hero-title-styled .line-black {
+    color: #000;
+}
+.hero-title-styled .line-blue {
+    color: var(--accent); /* Le bleu de ton portfolio */
+}
+
+
+/* Alignement identique à l'accueil */
+#stages-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+/* Le badge au-dessus du titre */
+.hero-pill {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(137, 195, 235, 0.15);
+    border-radius: 50px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+/* Titre massif dual-color */
+.hero-title-styled {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    line-height: 0.85;
+    letter-spacing: -4px;
+    margin-bottom: 2.5rem;
+}
+
+/* Paragraphe de description */
+.hero-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 550px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+/* Guide de défilement en bas à gauche */
+.scroll-guide {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
 }

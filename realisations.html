@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Réalisations – Nathan Barbirato</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <title>Réalisations | Nathan Barbirato</title>
+    <link rel="icon" type="image/gif" href="icone/dossier-de-portfolio.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #real-hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; }
+        .hero-title span { color: var(--accent); }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; padding: 0 5% 100px 5%; }
+
+        .project-card { background: #fff; border: 1px solid #eee; border-radius: 20px; overflow: hidden; cursor: pointer; transition: all 0.4s ease; position: relative; }
+        .project-card:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+
+        .card-banner { width: 100%; height: 180px; background: #fdfdfd; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #f0f0f0; }
+        .card-banner img { max-height: 140px; transition: 0.5s; opacity: 0.9; }
+
+        .status-badge { position: absolute; top: 15px; right: 15px; background: #e6f7ef; color: #2ecc71; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; border: 1px solid #2ecc71; }
+
+        .card-body { padding: 25px; }
+        .project-title { font-size: 1.25rem; font-weight: 800; color: #111; margin-bottom: 8px; }
+        .project-context { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+
+        .card-details { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 25px; }
+        .project-card.active .card-details { max-height: 1500px; padding-bottom: 30px; }
+
+        .section-label { font-weight: 800; font-size: 0.8rem; margin: 20px 0 10px; text-transform: uppercase; color: #333; display: block; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
+        .tag-list { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .tag { border: 1px solid var(--accent); color: var(--accent); padding: 2px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; }
+
+        .doc-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 6px; text-decoration: none; color: #444; font-size: 0.8rem; font-weight: 600; }
+        .doc-item:hover { background: #f9f9f9; border-color: var(--accent); transform: translateX(5px); transition: 0.2s; }
+
+        .expand-btn { float: right; background: #f5f5f5; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .project-card.active .expand-btn { transform: rotate(180deg); background: var(--accent); color: white; }
+
+        @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
@@ -13,111 +46,213 @@
     <a class="nav-logo" href="index.html#accueil">Nathan BARBIRATO - PORTFOLIO</a>
     <ul class="nav-links">
         <li><a href="index.html#accueil">Accueil</a></li>
-        <li><a href="index.html#about">Présentation</a></li>
-        <li><a href="tableau.html">Tableau de Synthèse</a></li>
-        <li><a href="realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a>
-            <ul class="sub-menu">
-                <li><a href="#annee1">Première Année</a></li>
-                <li><a href="#annee2">Deuxième Année</a></li>
-            </ul>
-        </li>
         <li><a href="stages.html">Stages</a></li>
-        <li><a href="competences.html">Compétences</a></li>
-        <li><a href="veille.html">Veille</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="realisations.html" style="color: var(--accent); font-weight: 800;">Réalisations</a></li>
+        <li><a href="tableau.html">Tableau de Synthèse</a></li>
+        <li><a href="#contact" class="nav-contact-link">Contact</a></li>
     </ul>
 </nav>
 
 <main>
-    <section id="realisations-hero" style="padding-top: 10rem; min-height: 35vh;">
-        <span class="hero-tag">Ateliers de Professionnalisation (AP)</span>
-        <h1>Mes<br><span>Réalisations</span> 📚</h1>
-        <p style="margin-top: 1.5rem; color: var(--muted); max-width: 600px;">Retrouvez ici l'ensemble des travaux pratiques et projets réseaux réalisés durant mon cursus en BTS SIO SISR.</p>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="annee1" style="padding-top: 5rem; padding-bottom: 8rem;">
-        <div class="reveal">
-            <p style="font-size: 0.72rem; text-transform: uppercase; color: var(--dark); font-weight: 600; margin-bottom: 0.6rem;">Fondamentaux Réseau & Système</p>
-            <h2 style="margin-bottom:3rem; font-family: var(--font-display);">Première Année (2024-2025)</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.1 : Strife</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Validation de solution Cloud privé avec Nextcloud sous Debian. Tests d'accès via station admin Kali Linux.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Nextcloud</span><span class="btn btn-mini">Debian</span><span class="btn btn-mini">Kali</span></div>
-                    <a href="realisations/strife/strife.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.2 : Godzilla</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Déploiement de parc avec FOG Project. Gestion de 2 VLANs (déploiement et service) et capture d'images W10.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">FOG</span><span class="btn btn-mini">VLAN</span><span class="btn btn-mini">W10</span></div>
-                    <a href="realisations/godzilla/godzilla.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.3 : FlexOffice</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Scripting PowerShell (logs, session) et mise en place d'un serveur FTP sécurisé (vsFTPd) sous Proxmox.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">PowerShell</span><span class="btn btn-mini">FTP</span><span class="btn btn-mini">Proxmox</span></div>
-                    <a href="realisations/flexoffice/flexoffice.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 2.4 : Assiz</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin réseau LAN (WiFi + DHCP + routage). Configuration d'un routeur à 3 pattes pour séparer les flux.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">WiFi</span><span class="btn btn-mini">DHCP</span><span class="btn btn-mini">Cisco</span></div>
-                    <a href="realisations/assiz/assiz.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-            </div>
+    <section id="real-hero">
+        <div class="hero-content reveal">
+            <span class="hero-tag">BTS SIO · SISR · Nathan Barbirato</span>
+            <h1 class="hero-title">Mes Réalisations<br/><span>Professionnelles</span></h1>
+            <p class="hero-desc">Dossier technique regroupant mes missions et projets de formation.</p>
         </div>
     </section>
 
-    <div class="divider"></div>
-
-    <section id="annee2" style="padding-top: 5rem;">
-        <div class="reveal">
-            <p style="font-size: 0.72rem; text-transform: uppercase; color: var(--dark); font-weight: 600; margin-bottom: 0.6rem;">Expertise & Cybersécurité</p>
-            <h2 style="margin-bottom:3rem; font-family: var(--font-display);">Deuxième Année (2025-2026)</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 3.1 : Navajo</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin réseau LAN (DNS + DHCP). Mise en place d'une passerelle à 3 pattes LAN-WAN avec routage statique et NTP.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">DNS</span><span class="btn btn-mini">DHCP</span><span class="btn btn-mini">Routage</span></div>
-                    <a href="realisations/navajo/navajo.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 3.2 : GPoPu</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Administration d'annuaire (AD + GPO + PowerShell). Sécurisation des accès et automatisation des tâches admin.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Active Directory</span><span class="btn btn-mini">GPO</span><span class="btn btn-mini">PS</span></div>
-                    <a href="realisations/gpopu/gpopu.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between;"><h3>AP 4.1 : DMZ</h3><span class="tag-sio">SISR</span></div>
-                    <p style="margin: 1rem 0; font-size: 0.9rem;">Admin passerelle dorsale (routage + DHCP + filtrage). Déploiement base MariaDB et serveur WebR sous Debian 12.</p>
-                    <div style="margin-bottom: 1.5rem;"><span class="btn btn-mini">Firewall</span><span class="btn btn-mini">SQL</span><span class="btn btn-mini">DMZ</span></div>
-                    <a href="realisations/dmz/dmz.html" class="btn btn-primary" style="width: 100%; text-align: center;">En savoir plus</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-<div class="pagination-container reveal">
-        <a href="tableau.html" class="btn btn-pagination">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Précédent : Tableau de Synthèse
-        </a>
+    <div class="projects-grid reveal">
         
-        <a href="stages.html" class="btn btn-pagination">
-            Suivant : Stages
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/server-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : M2L</span>
+                <h2 class="project-title">AP 2.4 Assiz - Routage & NAT</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.5.2</span><span class="tag">1.5.3</span><span class="tag">1.4.2</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/svr-rtr-15.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Fichier svr-rtr-15 <span>↓</span></a>
+                <a href="livrables/Routage_W2016.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Routage W2016 <span>↓</span></a>
+                <a href="livrables/Schéma_Réseau.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Schéma Réseau <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/network-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : GSB</span>
+                <h2 class="project-title">AP 3.1 Navajo - DNS & DHCP</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.4.2</span><span class="tag">1.5.2</span><span class="tag">1.5.1</span><span class="tag">1.1.1</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/documentation_dns_bind9.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation DNS Bind9 <span>↓</span></a>
+                <a href="livrables/documentation_dhcp.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation DHCP <span>↓</span></a>
+                <a href="livrables/Table_des_systèmes.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Table des systèmes <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/ad-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : GSB</span>
+                <h2 class="project-title">AP 3.2 GPoPu - Gestion AD & GPO</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.1.5</span><span class="tag">1.5.3</span><span class="tag">1.5.2</span><span class="tag">1.1.1</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/Documentation_sauvegarde_GPO.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Sauvegarde GPO <span>↓</span></a>
+                <a href="livrables/Matrice_des_GPO.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Matrice des GPO <span>↓</span></a>
+                <a href="livrables/Schéma_de_GPO.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Schéma de GPO <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/security-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : GSB</span>
+                <h2 class="project-title">AP 4.1 DMZ - Passerelle Dorsale</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.5.2</span><span class="tag">1.5.3</span><span class="tag">1.4.2</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/dmz-doc.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation DMZ <span>↓</span></a>
+                <a href="livrables/config-Bgtw1.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 config-Bgtw1 <span>↓</span></a>
+                <a href="livrables/Documentation_pfsense.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation pfsense <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/veeam-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : CEREALOG</span>
+                <h2 class="project-title">Sauvegarde avec Veeam</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.5.2</span><span class="tag">1.5.3</span><span class="tag">1.1.5</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/Compte_rendu_Installation_Veeam.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Installation de Veeam <span>↓</span></a>
+                <a href="livrables/Compte_rendu_Sauvegarde_Restauration.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Sauvegarde et Restauration <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/logpoint-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : Stage</span>
+                <h2 class="project-title">Installation de SLS Logpoint</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.5.2</span><span class="tag">1.5.3</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/PROJET_SLS_LOGPOINT.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 PROJET SLS LOGPOINT <span>↓</span></a>
+                <a href="livrables/sis-en_update_gde.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Update Guide <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/support-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : CEREALOG</span>
+                <h2 class="project-title">Service client (Ticketing)</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.1.2</span><span class="tag">1.2.1</span><span class="tag">1.2.2</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/Documentation_gestion_ticket.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation gestion ticket <span>↓</span></a>
+                <a href="livrables/Ordinogramme_création_ticket.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Ordinogramme création <span>↓</span></a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="toggleProject(this)">
+            <span class="status-badge">Terminé</span>
+            <div class="card-banner"><img src="icone/portfolio-icon.png" alt=""></div>
+            <div class="card-body">
+                <span class="project-context">Contexte : Épreuve E5</span>
+                <h2 class="project-title">4.3 - Création de mon portfolio</h2>
+                <div class="expand-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+            </div>
+            <div class="card-details">
+                <span class="section-label">Compétences :</span>
+                <div class="tag-list"><span class="tag">1.6.1</span><span class="tag">1.6.3</span></div>
+                <span class="section-label">Livrables :</span>
+                <a href="livrables/documentation_linkedin_seo.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Documentation LinkedIn & SEO <span>↓</span></a>
+                <a href="livrables/documentation_google_search_console.pdf" class="doc-item" target="_blank" rel="noopener noreferrer">📄 Google Search Console <span>↓</span></a>
+            </div>
+        </div>
+
     </div>
+</main>
+
+<section id="contact">
+    <div class="reveal">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h2 class="footer-name">Nathan <span>Barbirato</span></h2>
+                <p class="footer-bio">Étudiant en BTS SIO SISR au Lycée Gustave Eiffel. Passionné par la cybersécurité et l'administration systèmes.</p>
+                <div class="social-wrapper">
+                    <ul class="example-2">
+                        <li class="icon-content">
+                            <a href="https://www.linkedin.com/in/nathan-barbirato-0325b0345/" target="_blank" data-social="linkedin" aria-label="LinkedIn"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
+                            <div class="tooltip">LinkedIn</div>
+                        </li>
+                        <li class="icon-content">
+                            <a href="https://github.com/nbarbirato" target="_blank" data-social="github" aria-label="GitHub"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg></a>
+                            <div class="tooltip">GitHub</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#accueil">Accueil</a></li>
+                    <li><a href="stages.html">Stage</a></li>
+                    <li><a href="realisations.html">Réalisations</a></li>
+                    <li><a href="tableau.html">Tableau de Synthèse</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li>📧 nathanbarbirato@gmail.com</li>
+                    <li>📞 07 61 52 39 00</li>
+                    <li>📍 Izon, 33450</li>
+                </ul>
+                <a href="mailto:nathanbarbirato@gmail.com" class="btn btn-primary" style="margin-top: 1rem; width: fit-content;">Envoyer un message</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nathan Barbirato &bull; Tous droits réservés
+        </div>
+    </div>
+</section>
 </main>
 
 <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -125,16 +260,15 @@
 </div>
 
 <script>
+    const mainNav = document.getElementById('mainNav');
     const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show'); });
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 150) mainNav.classList.add('scrolled'); else mainNav.classList.remove('scrolled');
+        if (window.scrollY > 400) btt.classList.add('show'); else btt.classList.remove('show');
+    });
+    function toggleProject(card) { card.classList.toggle('active'); }
     const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    window.addEventListener('scroll', function() {
-    if (window.scrollY > 150) mainNav.classList.add('scrolled'); 
-    else mainNav.classList.remove('scrolled');
-    });
 </script>
-
 </body>
 </html>

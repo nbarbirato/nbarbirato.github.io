@@ -9,6 +9,40 @@
     <link rel="icon" type="image/gif" href="icone/dossier-de-portfolio.png">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+    .btn-cert {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: #f8f9fa;
+        color: var(--dark);
+        border: 1px solid #eee;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cert:hover {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Pour s'assurer que les cartes ont la même taille et le bouton en bas */
+    .cert-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+</style>
 </head>
 <body>
 
@@ -170,52 +204,65 @@
 <div class="divider"></div>
 
     <section id="certifications">
-        <div class="reveal">
-            <h2 class="section-title">Mes Certifications 🏆</h2>
-            <p class="section-subtitle">Validation de mes compétences en cybersécurité, cloud et environnement numérique.</p>
-            <br>
-            <div class="grid-3">
-                <div class="card cert-card">
-                    <div class="cert-top">
-                        <span class="tag-sio">ANSSI</span>
-                        <span class="cert-status success">92% RÉUSSI</span>
-                    </div>
-                    <h3>SecNumacadémie</h3>
-                    <p>Sécurité des systèmes d'information et cyberprotection.</p>
+    <div class="reveal">
+        <h2 class="section-title">Mes Certifications 🏆</h2>
+        <p class="section-subtitle">Validation de mes compétences en cybersécurité, cloud et environnement numérique.</p>
+        <br>
+        <div class="grid-3">
+            <div class="card cert-card">
+                <div class="cert-top">
+                    <span class="tag-sio">ANSSI</span>
+                    <span class="cert-status success">92% RÉUSSI</span>
                 </div>
-                <div class="card cert-card">
-                    <div class="cert-top">
-                        <span class="tag-sio">MICROSOFT</span>
-                        <span class="cert-status valid">VALIDÉ</span>
-                    </div>
-                    <h3>Infrastructure Cloud Azure</h3>
-                    <p>Concepts fondamentaux, architecture et gouvernance Cloud.</p>
-                </div>
-                <div class="card cert-card">
-                    <div class="cert-top">
-                        <span class="tag-sio">PIX</span>
-                        <span class="cert-status success">518 PIX</span>
-                    </div>
-                    <h3>Certification Numérique</h3>
-                    <p>Validation des compétences numériques (Niveau Avancé 1).</p>
-                </div>
-                <div class="card cert-card">
-                    <div class="cert-top">
-                        <span class="tag-sio">CNIL</span>
-                        <span class="cert-status valid">VALIDÉ</span>
-                    </div>
-                    <h3>L'Atelier RGPD</h3>
-                    <p>Protection des données personnelles et conformité européenne.</p>
-                </div>
+                <h3>SecNumacadémie</h3>
+                <p>Sécurité des systèmes d'information et cyberprotection.</p>
+                <a href="assets/certification-anssi.pdf" target="_blank" class="btn-cert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Voir le certificat
+                </a>
             </div>
-            <div class="cert-footer">
-                <a href="certifications.html" class="btn btn-primary">
-                    Voir les justificatifs PDF
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+
+            <div class="card cert-card">
+                <div class="cert-top">
+                    <span class="tag-sio">MICROSOFT</span>
+                    <span class="cert-status valid">VALIDÉ</span>
+                </div>
+                <h3>Infrastructure Cloud Azure</h3>
+                <p>Concepts fondamentaux, architecture et gouvernance Cloud.</p>
+                <a href="assets/certification-azure.pdf" target="_blank" class="btn-cert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Voir le certificat
+                </a>
+            </div>
+
+            <div class="card cert-card">
+                <div class="cert-top">
+                    <span class="tag-sio">PIX</span>
+                    <span class="cert-status success">518 PIX</span>
+                </div>
+                <h3>Certification Numérique</h3>
+                <p>Validation des compétences numériques (Niveau Avancé 1).</p>
+                <a href="assets/certification-pix.pdf" target="_blank" class="btn-cert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Voir le certificat
+                </a>
+            </div>
+
+            <div class="card cert-card">
+                <div class="cert-top">
+                    <span class="tag-sio">CNIL</span>
+                    <span class="cert-status valid">VALIDÉ</span>
+                </div>
+                <h3>L'Atelier RGPD</h3>
+                <p>Protection des données personnelles et conformité européenne.</p>
+                <a href="assets/certification-rgpd.pdf" target="_blank" class="btn-cert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    Voir le certificat
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <div class="divider"></div>
 
@@ -308,7 +355,7 @@
                 <div class="social-wrapper">
                     <ul class="example-2">
                         <li class="icon-content">
-                            <a href="https://www.linkedin.com/in/nathan-barbirato-0325b0345/" target="_blank" data-social="linkedin" aria-label="LinkedIn"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
+                            <a href="https://www.linkedin.com/in/nathanbarbirato" target="_blank" data-social="linkedin" aria-label="LinkedIn"><div class="filled"></div><svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg></a>
                             <div class="tooltip">LinkedIn</div>
                         </li>
                         <li class="icon-content">

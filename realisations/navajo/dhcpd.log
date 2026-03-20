@@ -1,0 +1,25 @@
+2025-11-27T21:32:07.234901+01:00 srv-rezolab-4 dhcpd[3477]: Internet Systems Consortium DHCP Server 4.4.3-P1
+2025-11-27T21:32:07.234979+01:00 srv-rezolab-4 dhcpd[3477]: Copyright 2004-2022 Internet Systems Consortium.
+2025-11-27T21:32:07.235018+01:00 srv-rezolab-4 dhcpd[3477]: All rights reserved.
+2025-11-27T21:32:07.235029+01:00 srv-rezolab-4 dhcpd[3477]: For info, please visit https://www.isc.org/software/dhcp/
+2025-11-27T21:32:07.239315+01:00 srv-rezolab-4 dhcpd[3480]: Internet Systems Consortium DHCP Server 4.4.3-P1
+2025-11-27T21:32:07.239489+01:00 srv-rezolab-4 dhcpd[3480]: Copyright 2004-2022 Internet Systems Consortium.
+2025-11-27T21:32:07.239560+01:00 srv-rezolab-4 dhcpd[3480]: All rights reserved.
+2025-11-27T21:32:07.239581+01:00 srv-rezolab-4 dhcpd[3480]: For info, please visit https://www.isc.org/software/dhcp/
+2025-11-27T21:32:07.239838+01:00 srv-rezolab-4 dhcpd[3480]: Wrote 3 leases to leases file.
+2025-11-27T21:32:07.253426+01:00 srv-rezolab-4 dhcpd[3480]: Server starting service.
+2025-11-27T21:32:24.072328+01:00 srv-rezolab-4 dhcpd[3547]: Internet Systems Consortium DHCP Server 4.4.3-P1
+2025-11-27T21:32:24.072376+01:00 srv-rezolab-4 dhcpd[3547]: Copyright 2004-2022 Internet Systems Consortium.
+2025-11-27T21:32:24.072387+01:00 srv-rezolab-4 dhcpd[3547]: All rights reserved.
+2025-11-27T21:32:24.072396+01:00 srv-rezolab-4 dhcpd[3547]: For info, please visit https://www.isc.org/software/dhcp/
+2025-11-27T21:32:24.076556+01:00 srv-rezolab-4 dhcpd[3550]: Internet Systems Consortium DHCP Server 4.4.3-P1
+2025-11-27T21:32:24.076619+01:00 srv-rezolab-4 dhcpd[3550]: Copyright 2004-2022 Internet Systems Consortium.
+2025-11-27T21:32:24.076639+01:00 srv-rezolab-4 dhcpd[3550]: All rights reserved.
+2025-11-27T21:32:24.076655+01:00 srv-rezolab-4 dhcpd[3550]: For info, please visit https://www.isc.org/software/dhcp/
+2025-11-27T21:32:24.076811+01:00 srv-rezolab-4 dhcpd[3550]: Wrote 3 leases to leases file.
+2025-11-27T21:32:24.093860+01:00 srv-rezolab-4 dhcpd[3550]: Server starting service.
+2025-11-27T21:33:21.351932+01:00 srv-rezolab-4 dhcpd[3550]: DHCPREQUEST for 172.16.1.1 from 08:00:27:a4:77:c2 (sta-rezolab) via enp0s17
+2025-11-27T21:33:21.360695+01:00 srv-rezolab-4 dhcpd[3550]: DHCPACK on 172.16.1.1 to 08:00:27:a4:77:c2 (sta-rezolab) via enp0s17
+2025-11-27T21:34:01.160367+01:00 srv-rezolab-4 dhcpd[3550]: reuse_lease: lease age 40 (secs) under 25% threshold, reply with unaltered, existing lease for 172.16.1.1
+2025-11-27T21:34:01.160556+01:00 srv-rezolab-4 dhcpd[3550]: DHCPREQUEST for 172.16.1.1 from 08:00:27:a4:77:c2 (sta-rezolab) via enp0s17
+2025-11-27T21:34:01.160588+01:00 srv-rezolab-4 dhcpd[3550]: DHCPACK on 172.16.1.1 to 08:00:27:a4:77:c2 (sta-rezolab) via enp0s17
